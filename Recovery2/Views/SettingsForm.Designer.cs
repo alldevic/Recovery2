@@ -32,10 +32,10 @@ namespace Recovery2.Views
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.propertyGrid1 = new System.Windows.Forms.PropertyGrid();
+            this.ButtonApply = new System.Windows.Forms.Button();
+            this.ButtonCancel = new System.Windows.Forms.Button();
+            this.ButtonDefault = new System.Windows.Forms.Button();
+            this.GridConfig = new System.Windows.Forms.PropertyGrid();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -45,10 +45,10 @@ namespace Recovery2.Views
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33F));
-            this.tableLayoutPanel1.Controls.Add(this.button3, 2, 1);
-            this.tableLayoutPanel1.Controls.Add(this.button2, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.button1, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.propertyGrid1, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.ButtonApply, 2, 1);
+            this.tableLayoutPanel1.Controls.Add(this.ButtonCancel, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.ButtonDefault, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.GridConfig, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -60,48 +60,48 @@ namespace Recovery2.Views
             this.tableLayoutPanel1.Size = new System.Drawing.Size(304, 441);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
-            // button3
+            // ButtonApply
             // 
-            this.button3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button3.Location = new System.Drawing.Point(204, 412);
-            this.button3.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(99, 26);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "Применить";
-            this.button3.UseVisualStyleBackColor = true;
+            this.ButtonApply.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ButtonApply.Location = new System.Drawing.Point(204, 412);
+            this.ButtonApply.Margin = new System.Windows.Forms.Padding(1, 0, 3, 0);
+            this.ButtonApply.Name = "ButtonApply";
+            this.ButtonApply.Size = new System.Drawing.Size(97, 26);
+            this.ButtonApply.TabIndex = 2;
+            this.ButtonApply.Text = "Применить";
+            this.ButtonApply.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // ButtonCancel
             // 
-            this.button2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button2.Location = new System.Drawing.Point(101, 412);
-            this.button2.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(101, 26);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Отмена";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.ButtonCancel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ButtonCancel.Location = new System.Drawing.Point(101, 412);
+            this.ButtonCancel.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.ButtonCancel.Name = "ButtonCancel";
+            this.ButtonCancel.Size = new System.Drawing.Size(101, 26);
+            this.ButtonCancel.TabIndex = 1;
+            this.ButtonCancel.Text = "Отмена";
+            this.ButtonCancel.UseVisualStyleBackColor = true;
+            this.ButtonCancel.Click += new System.EventHandler(this.button2_Click);
             // 
-            // button1
+            // ButtonDefault
             // 
-            this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button1.Location = new System.Drawing.Point(1, 412);
-            this.button1.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(98, 26);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "По умолчанию";
-            this.button1.UseVisualStyleBackColor = true;
+            this.ButtonDefault.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ButtonDefault.Location = new System.Drawing.Point(3, 412);
+            this.ButtonDefault.Margin = new System.Windows.Forms.Padding(3, 0, 1, 0);
+            this.ButtonDefault.Name = "ButtonDefault";
+            this.ButtonDefault.Size = new System.Drawing.Size(96, 26);
+            this.ButtonDefault.TabIndex = 0;
+            this.ButtonDefault.Text = "По умолчанию";
+            this.ButtonDefault.UseVisualStyleBackColor = true;
             // 
-            // propertyGrid1
+            // GridConfig
             // 
-            this.tableLayoutPanel1.SetColumnSpan(this.propertyGrid1, 3);
-            this.propertyGrid1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.propertyGrid1.Location = new System.Drawing.Point(3, 3);
-            this.propertyGrid1.Name = "propertyGrid1";
-            this.propertyGrid1.Size = new System.Drawing.Size(298, 406);
-            this.propertyGrid1.TabIndex = 3;
+            this.tableLayoutPanel1.SetColumnSpan(this.GridConfig, 3);
+            this.GridConfig.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.GridConfig.Location = new System.Drawing.Point(3, 3);
+            this.GridConfig.Name = "GridConfig";
+            this.GridConfig.Size = new System.Drawing.Size(298, 406);
+            this.GridConfig.TabIndex = 3;
             // 
             // SettingsForm
             // 
@@ -117,14 +117,15 @@ namespace Recovery2.Views
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.Text = "Параметры";
+            this.Load += new System.EventHandler(this.SettingsForm_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
         }
 
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.PropertyGrid propertyGrid1;
+        private System.Windows.Forms.Button ButtonApply;
+        private System.Windows.Forms.Button ButtonCancel;
+        private System.Windows.Forms.Button ButtonDefault;
+        private System.Windows.Forms.PropertyGrid GridConfig;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
 
         #endregion

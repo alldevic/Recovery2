@@ -55,13 +55,19 @@
         <Reference Include="System.Xml" />
     </ItemGroup>
     <ItemGroup>
+        <Compile Include="Extensions\BooleanToYesNoTypeConverter.cs" />
+        <Compile Include="Extensions\EnumTypeConverter.cs" />
+        <Compile Include="Extensions\Utils.cs" />
+        <Compile Include="GlobalConfigLoader.cs" />
+        <Compile Include="GlobalConfigWatcher.cs" />
+        <Compile Include="Models\ContestItem.cs" />
         <Compile Include="Models\Gender.cs" />
+        <Compile Include="Models\GlobalConfig.cs" />
         <Compile Include="Models\NotifyPropertyChangedBase.cs" />
         <Compile Include="Models\User.cs" />
         <Compile Include="Program.cs" />
         <Compile Include="Properties\Annotations.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
-        <Compile Include="Utils.cs" />
         <Compile Include="Views\MainForm.cs">
           <SubType>Form</SubType>
         </Compile>
