@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace Recovery2
+namespace Recovery2.Views
 {
     partial class MainForm
     {

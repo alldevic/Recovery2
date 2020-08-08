@@ -4,7 +4,7 @@ using NLog;
 using Recovery2.Models;
 using static Recovery2.Utils;
 
-namespace Recovery2
+namespace Recovery2.Views
 {
     public partial class MainForm : Form
     {

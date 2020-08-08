@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace Recovery2
+namespace Recovery2.Views
 {
     public partial class SettingsForm : Form
     {
