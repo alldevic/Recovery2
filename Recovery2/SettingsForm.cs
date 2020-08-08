@@ -8,7 +8,6 @@ namespace Recovery2
         public SettingsForm()
         {
             InitializeComponent();
-
         }
         private void button2_Click(object sender, EventArgs e)
         {
