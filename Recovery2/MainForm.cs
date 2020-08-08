@@ -29,5 +29,11 @@ namespace Recovery2
         {
             _user = new User();
         }
+
+        private void ButtonConfig_Click(object sender, EventArgs e)
+        {
+            var tmp = new SettingsForm();
+            tmp.ShowDialog();
+        }
     }
 }
