@@ -1,15 +1,13 @@
-﻿using System;
-
-namespace Recovery2.Models
+﻿namespace Recovery2.Models
 {
     public class User
     {
-        public User(string firstName, string secondtName, string lasttName, uint age, Gender gemder)
+        public User(string firstName, string secondName, string lastName, uint age, Gender gender)
         {
-            Gemder = gemder;
+            Gender = gender;
             FirstName = firstName;
-            SecondtName = secondtName;
-            LasttName = lasttName;
+            SecondName = secondName;
+            LastName = lastName;
             Age = age;
         }
 
@@ -18,10 +16,10 @@ namespace Recovery2.Models
         }
 
         public string FirstName { get; private set; } = string.Empty;
-        public string SecondtName { get; private set; } = string.Empty;
-        public string LasttName { get; private set; } = string.Empty;
+        public string SecondName { get; private set; } = string.Empty;
+        public string LastName { get; private set; } = string.Empty;
         public uint Age { get; private set; } = 0;
-        public Gender Gemder { get; private set; } = Gender.Male;
+        public Gender Gender { get; private set; } = Gender.Male;
         
     }
 }
