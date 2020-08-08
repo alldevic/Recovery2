@@ -220,6 +220,7 @@ namespace Recovery2
             this.ButtonBegin.TabIndex = 11;
             this.ButtonBegin.Text = "Начать";
             this.ButtonBegin.UseVisualStyleBackColor = true;
+            this.ButtonBegin.Click += new System.EventHandler(this.ButtonBegin_Click);
             // 
             // RadioMale
             // 
