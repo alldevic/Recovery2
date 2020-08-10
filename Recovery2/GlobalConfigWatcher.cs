@@ -50,8 +50,6 @@ namespace Recovery2
 
         private void OnChanged(object sender, FileSystemEventArgs e)
         {
-            Thread.Sleep(350);
-            ConfigurationManager.RefreshSection("AppSettings");
             _config = GlobalConfigLoader.Load();
         }
 

@@ -11,7 +11,7 @@ namespace Recovery2.Views
         private static Logger _log;
         private User _user;
         private GlobalConfig _config;
-        // private GlobalConfigWatcher _watcher;
+        private GlobalConfigWatcher _watcher;
 
         public MainForm()
         {
@@ -23,8 +23,8 @@ namespace Recovery2.Views
             _log = LogManager.GetCurrentClassLogger();
             _user = new User();
             _config = GlobalConfigLoader.Load();
-            // _watcher = new GlobalConfigWatcher(ref _config);
-            // _watcher.Start();
+            _watcher = new GlobalConfigWatcher(ref _config);
+            _watcher.Start();
             TextLastName.DataBindings.Add("Text", _user, $"{nameof(_user.LastName)}");
             TextFirstName.DataBindings.Add("Text", _user, $"{nameof(_user.FirstName)}");
             TextSecondName.DataBindings.Add("Text", _user, $"{nameof(_user.SecondName)}");

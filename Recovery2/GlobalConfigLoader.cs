@@ -19,8 +19,8 @@ namespace Recovery2
             var res = new GlobalConfig();
             try
             {
-                
-                res.Title = ConfigurationManager.AppSettings[$"{nameof(res.Title)}"];
+                var config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+                res.Title = config.AppSettings.Settings[$"{nameof(res.Title)}"].Value;
                 Log.Trace($"{nameof(res.Title)}='{res.Title}'");
 
                 res.Count = uint.Parse(ConfigurationManager.AppSettings[$"{nameof(res.Count)}"]);
