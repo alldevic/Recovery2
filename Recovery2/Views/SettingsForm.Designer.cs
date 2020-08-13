@@ -62,6 +62,7 @@ namespace Recovery2.Views
             // 
             // ButtonApply
             // 
+            this.ButtonApply.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.ButtonApply.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ButtonApply.Location = new System.Drawing.Point(204, 412);
             this.ButtonApply.Margin = new System.Windows.Forms.Padding(1, 0, 3, 0);
@@ -73,6 +74,7 @@ namespace Recovery2.Views
             // 
             // ButtonCancel
             // 
+            this.ButtonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.ButtonCancel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ButtonCancel.Location = new System.Drawing.Point(101, 412);
             this.ButtonCancel.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
@@ -81,10 +83,10 @@ namespace Recovery2.Views
             this.ButtonCancel.TabIndex = 1;
             this.ButtonCancel.Text = "Отмена";
             this.ButtonCancel.UseVisualStyleBackColor = true;
-            this.ButtonCancel.Click += new System.EventHandler(this.button2_Click);
             // 
             // ButtonDefault
             // 
+            this.ButtonDefault.DialogResult = System.Windows.Forms.DialogResult.Abort;
             this.ButtonDefault.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ButtonDefault.Location = new System.Drawing.Point(3, 412);
             this.ButtonDefault.Margin = new System.Windows.Forms.Padding(3, 0, 1, 0);

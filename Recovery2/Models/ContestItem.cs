@@ -9,7 +9,15 @@ namespace Recovery2.Models
         private Color _color;
         private uint _delay;
         private Keys _key;
+        private string _name;
 
+        [Description("Внутреннее имя")]
+        [DisplayName("Внутреннее имя")]
+        public string Name
+        {
+            get => _name;
+            set => SetProperty(ref _name, value);
+        }
 
         [Description("Цвет кадра")]
         [DisplayName("Цвет кадра")]

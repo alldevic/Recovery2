@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using NLog;
+using Recovery2.Configs;
 using Recovery2.Models;
 using static Recovery2.Extensions.Utils;
 
@@ -10,8 +11,7 @@ namespace Recovery2.Views
     {
         private static Logger _log;
         private User _user;
-        private GlobalConfig _config;
-        private GlobalConfigWatcher _watcher;
+        private ConfigLoader _configLoader;
 
         public MainForm()
         {
@@ -22,9 +22,8 @@ namespace Recovery2.Views
         {
             _log = LogManager.GetCurrentClassLogger();
             _user = new User();
-            _config = GlobalConfigLoader.Load();
-            _watcher = new GlobalConfigWatcher(ref _config);
-            _watcher.Start();
+            _configLoader = new ConfigLoader();
+            _configLoader.Load();
             TextLastName.DataBindings.Add("Text", _user, $"{nameof(_user.LastName)}");
             TextFirstName.DataBindings.Add("Text", _user, $"{nameof(_user.FirstName)}");
             TextSecondName.DataBindings.Add("Text", _user, $"{nameof(_user.SecondName)}");
@@ -43,7 +42,27 @@ namespace Recovery2.Views
 
         private void ButtonClear_Click(object sender, EventArgs e) => _user.Clear();
 
-        private void ButtonConfig_Click(object sender, EventArgs e) => new SettingsForm(_config).Show();
+        private void ButtonConfig_Click(object sender, EventArgs e)
+        {
+            switch (new SettingsForm(_configLoader.GlobalConfig).ShowDialog())
+            {
+                case DialogResult.Yes:
+                case DialogResult.OK:
+                    _configLoader.Save();
+                    break;
+                case DialogResult.No:
+                case DialogResult.Cancel:
+                    _configLoader.Load();
+                    break;
+                case DialogResult.Abort:
+                    _configLoader.LoadDefaults();
+                    break;
+                default:
+                    _configLoader.Load();
+                    _log.Warn("Необработанное поведение в результате настройки");
+                    break;
+            }
+        }
 
         private void ButtonBegin_Click(object sender, EventArgs e)
         {

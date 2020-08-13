@@ -5,7 +5,7 @@
         private string _firstName = string.Empty;
         private string _secondName = string.Empty;
         private string _lastName = string.Empty;
-        private uint _age = 0;
+        private uint _age;
         private Gender _gender = Gender.Male;
 
         public void Clear()

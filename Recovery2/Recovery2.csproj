@@ -55,11 +55,13 @@
         <Reference Include="System.Xml" />
     </ItemGroup>
     <ItemGroup>
+        <Compile Include="Configs\ConfigLoader.cs" />
+        <Compile Include="Configs\FrameElement.cs" />
+        <Compile Include="Configs\FramesCollection.cs" />
+        <Compile Include="Configs\FramesConfigSection.cs" />
         <Compile Include="Extensions\BooleanToYesNoTypeConverter.cs" />
         <Compile Include="Extensions\EnumTypeConverter.cs" />
         <Compile Include="Extensions\Utils.cs" />
-        <Compile Include="GlobalConfigLoader.cs" />
-        <Compile Include="GlobalConfigWatcher.cs" />
         <Compile Include="Models\ContestItem.cs" />
         <Compile Include="Models\Gender.cs" />
         <Compile Include="Models\GlobalConfig.cs" />

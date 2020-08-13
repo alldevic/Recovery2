@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
 using Recovery2.Extensions;
 
@@ -12,7 +12,7 @@ namespace Recovery2.Models
         private bool _random;
         private bool _blackscreen;
         private ContestItem _blackscreenItem;
-        private List<ContestItem> _items;
+        private ObservableCollection<ContestItem> _items;
 
         [Category("Основные")]
         [Description("Заголовок для окна с тестом")]
@@ -74,7 +74,7 @@ namespace Recovery2.Models
         [Category("Алгоритм")]
         [Description("Описание кадров для алгоритма")]
         [DisplayName("Кадры")]
-        public List<ContestItem> Items
+        public ObservableCollection<ContestItem> Items
         {
             get => _items;
             set => SetProperty(ref _items, value);
