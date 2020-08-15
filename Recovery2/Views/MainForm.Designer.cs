@@ -1,4 +1,6 @@
 ﻿using System.ComponentModel;
+using System.Drawing;
+using System.Windows.Forms;
 
 namespace Recovery2.Views
 {
@@ -193,7 +195,7 @@ namespace Recovery2.Views
             this.ButtonClear.Margin = new System.Windows.Forms.Padding(0);
             this.ButtonClear.Name = "ButtonClear";
             this.ButtonClear.Size = new System.Drawing.Size(96, 26);
-            this.ButtonClear.TabIndex = 9;
+            this.ButtonClear.TabIndex = 11;
             this.ButtonClear.Text = "Очистить";
             this.ButtonClear.UseVisualStyleBackColor = true;
             this.ButtonClear.Click += new System.EventHandler(this.ButtonClear_Click);
@@ -205,7 +207,7 @@ namespace Recovery2.Views
             this.ButtonConfig.Margin = new System.Windows.Forms.Padding(0);
             this.ButtonConfig.Name = "ButtonConfig";
             this.ButtonConfig.Size = new System.Drawing.Size(96, 26);
-            this.ButtonConfig.TabIndex = 10;
+            this.ButtonConfig.TabIndex = 12;
             this.ButtonConfig.Text = "Параметры";
             this.ButtonConfig.UseVisualStyleBackColor = true;
             this.ButtonConfig.Click += new System.EventHandler(this.ButtonConfig_Click);
@@ -217,7 +219,7 @@ namespace Recovery2.Views
             this.ButtonBegin.Margin = new System.Windows.Forms.Padding(0);
             this.ButtonBegin.Name = "ButtonBegin";
             this.ButtonBegin.Size = new System.Drawing.Size(96, 26);
-            this.ButtonBegin.TabIndex = 11;
+            this.ButtonBegin.TabIndex = 13;
             this.ButtonBegin.Text = "Начать";
             this.ButtonBegin.UseVisualStyleBackColor = true;
             this.ButtonBegin.Click += new System.EventHandler(this.ButtonBegin_Click);
@@ -227,7 +229,7 @@ namespace Recovery2.Views
             this.RadioMale.Location = new System.Drawing.Point(259, 189);
             this.RadioMale.Name = "RadioMale";
             this.RadioMale.Size = new System.Drawing.Size(90, 20);
-            this.RadioMale.TabIndex = 12;
+            this.RadioMale.TabIndex = 9;
             this.RadioMale.TabStop = true;
             this.RadioMale.Text = "Мужской";
             this.RadioMale.UseVisualStyleBackColor = true;
@@ -237,7 +239,7 @@ namespace Recovery2.Views
             this.RadioFemale.Location = new System.Drawing.Point(355, 189);
             this.RadioFemale.Name = "RadioFemale";
             this.RadioFemale.Size = new System.Drawing.Size(90, 20);
-            this.RadioFemale.TabIndex = 13;
+            this.RadioFemale.TabIndex = 10;
             this.RadioFemale.TabStop = true;
             this.RadioFemale.Text = "Женский";
             this.RadioFemale.UseVisualStyleBackColor = true;
@@ -246,10 +248,11 @@ namespace Recovery2.Views
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Size = new System.Drawing.Size(800, 600);
+            this.MinimumSize = new System.Drawing.Size(800, 600);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "MainForm";
-            this.Text = "Восстановление";
+            this.Text = $"Восстановление {Application.ProductVersion.Substring(0, Application.ProductVersion.Length - 2)}";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
