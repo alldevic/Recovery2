@@ -15,8 +15,9 @@ namespace Recovery2.Configs
         private readonly Logger _log = LogManager.GetCurrentClassLogger();
         private readonly Configuration _config;
         private GlobalConfig _globalConfig;
+        private bool _loadBroken = false;
 
-        private readonly GlobalConfig _defaultConfig = new GlobalConfig()
+        private readonly GlobalConfig _defaultConfig = new GlobalConfig
         {
             Title = @"Как нестандартно можно использовать карандаш?",
             Count = 30,
@@ -63,32 +64,67 @@ namespace Recovery2.Configs
 
         public GlobalConfig GlobalConfig => _globalConfig;
 
-
         private string GetAppSetting(string key) =>
             _config.AppSettings.Settings[key].Value;
 
-        private void SetAppSetting(string key, object value) =>
-            _config.AppSettings.Settings[key].Value = value.ToString();
+        private void SetAppSetting(string key, object value)
+        {
+            try
+            {
+                _config.AppSettings.Settings[key].Value = value.ToString();
+            }
+            catch
+            {
+                _config.AppSettings.Settings.Add(key, value.ToString());
+            }
+        }
+
+        private void SetProp<T>(out T dest, string key, Func<string, T> convert, T def)
+        {
+            try
+            {
+                dest = convert(GetAppSetting(key));
+                _log.Trace($"{key}='{dest}'");
+            }
+            catch
+            {
+                _log.Warn(
+                    $"Ошибка при загрузке значения {key}, использовано значение по умолчанию: '{def}'");
+                dest = def;
+                _log.Trace($"{key}='{dest}'");
+            }
+        }
 
         public void Load()
         {
+            _log.Info("Загрузка настроек...");
             if (_config.GetSection("framesSettings") is FramesConfigSection frames)
             {
+                if (frames.FrameItems.Count == 0)
+                {
+                    _log.Warn("Не обнаружены настройки для фреймов, используются стандартные настройки");
+                    LoadDefaults();
+                    return;
+                }
+
                 _globalConfig = new GlobalConfig();
-                _globalConfig.Title = GetAppSetting(nameof(_globalConfig.Title));
-                _log.Trace($"{nameof(_globalConfig.Title)}='{_globalConfig.Title}'");
 
-                _globalConfig.Count = uint.Parse(GetAppSetting(nameof(_globalConfig.Count)));
-                _log.Trace($"{nameof(_globalConfig.Count)}='{_globalConfig.Count}'");
 
-                _globalConfig.DefaultDelay = int.Parse(GetAppSetting(nameof(_globalConfig.DefaultDelay)));
-                _log.Trace($"{nameof(_globalConfig.DefaultDelay)}='{_globalConfig.DefaultDelay}'");
+                SetProp(out var title, nameof(_globalConfig.Title), s => s, _defaultConfig.Title);
+                _globalConfig.Title = title;
 
-                _globalConfig.Random = Convert.ToBoolean(GetAppSetting(nameof(_globalConfig.Random)));
-                _log.Trace($"{nameof(_globalConfig.Random)}='{_globalConfig.Random}'");
+                SetProp(out var count, nameof(_globalConfig.Count), uint.Parse, _defaultConfig.Count);
+                _globalConfig.Count = count;
 
-                _globalConfig.Blackscreen = Convert.ToBoolean(GetAppSetting(nameof(_globalConfig.Blackscreen)));
-                _log.Trace($"{nameof(_globalConfig.Blackscreen)}='{_globalConfig.Blackscreen}'");
+                SetProp(out var defdelay, nameof(_globalConfig.DefaultDelay), int.Parse, _defaultConfig.DefaultDelay);
+                _globalConfig.DefaultDelay = defdelay;
+
+                SetProp(out var random, nameof(_globalConfig.Random), Convert.ToBoolean, _defaultConfig.Random);
+                _globalConfig.Random = random;
+
+                SetProp(out var blscreen, nameof(_globalConfig.Blackscreen), Convert.ToBoolean,
+                    _defaultConfig.Blackscreen);
+                _globalConfig.Random = blscreen;
 
                 _globalConfig.Items = new ObservableCollection<ContestItem>();
                 foreach (FrameElement frameItem in frames.FrameItems)
@@ -127,13 +163,26 @@ namespace Recovery2.Configs
                     _log.Trace($"Items.{last.Name}.{nameof(last.Delay)}='{last.Delay}'");
                     _log.Trace($"Items.{last.Name}.{nameof(last.Key)}='{last.Key}'");
                 }
+
+                if (_loadBroken)
+                {
+                    Save();
+                }
             }
+            else
+            {
+                _log.Warn("Не обнаружены настройки для фреймов, используются стандартные настройки");
+                LoadDefaults();
+            }
+            _log.Info("Загрузка настроек завершена");
         }
 
         public void LoadDefaults()
         {
+            _log.Info("Установка стандартных настроек...");
             _globalConfig = _defaultConfig.Copy();
             Save();
+            _log.Info("Установка стандартных настроек завершена");
         }
 
         public void Save()
@@ -178,7 +227,7 @@ namespace Recovery2.Configs
             }
 
             _config.Save(ConfigurationSaveMode.Modified);
-            _log.Info("Настройки успешно сохранены");
+            _log.Info("Сохранение настроек завершено");
         }
     }
 }
