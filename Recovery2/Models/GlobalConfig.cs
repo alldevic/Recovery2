@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Drawing.Design;
 using Recovery2.Extensions;
 
 namespace Recovery2.Models
@@ -74,6 +75,7 @@ namespace Recovery2.Models
         [Category("Алгоритм")]
         [Description("Описание кадров для алгоритма")]
         [DisplayName("Кадры")]
+        [Editor(typeof(CustomCollectionEditor), typeof(UITypeEditor))]
         public ObservableCollection<ContestItem> Items
         {
             get => _items;
