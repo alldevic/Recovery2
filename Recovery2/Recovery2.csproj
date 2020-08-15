@@ -60,6 +60,7 @@
         <Compile Include="Configs\FrameElement.cs" />
         <Compile Include="Configs\FramesCollection.cs" />
         <Compile Include="Configs\FramesConfigSection.cs" />
+        <Compile Include="Extensions\BlackscreenExpandableConverter.cs" />
         <Compile Include="Extensions\BooleanToYesNoTypeConverter.cs" />
         <Compile Include="Extensions\CustomCollectionEditor.cs" />
         <Compile Include="Extensions\EnumTypeConverter.cs" />

@@ -60,12 +60,12 @@ namespace Recovery2.Models
         {
             get => _blackscreen;
             set => SetProperty(ref _blackscreen, value);
-
         }
 
         [Category("Алгоритм")]
         [Description("Настройки черного экрана")]
         [DisplayName("Черный кадр")]
+        [TypeConverter(typeof(BlackscreenExpandableConverter))]
         public ContestItem BlackscreenItem
         {
             get => _blackscreenItem;

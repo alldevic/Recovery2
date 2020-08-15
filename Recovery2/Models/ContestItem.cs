@@ -4,7 +4,6 @@ using System.Windows.Forms;
 
 namespace Recovery2.Models
 {
-    [TypeConverter(typeof(ExpandableObjectConverter)) ]
     public class ContestItem : NotifyPropertyChangedBase
     {
         private Color _color;
