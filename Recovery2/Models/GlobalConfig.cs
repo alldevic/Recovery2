@@ -15,36 +15,36 @@ namespace Recovery2.Models
         private ContestItem _blackscreenItem;
         private ObservableCollection<ContestItem> _items;
 
-        [Category("Основные")]
-        [Description("Заголовок для окна с тестом")]
-        [DisplayName("Заголовок")]
+        [Category(@"Основные")]
+        [Description(@"Заголовок для окна с тестом")]
+        [DisplayName(@"Заголовок")]
         public string Title
         {
             get => _title;
             set => SetProperty(ref _title, value);
         }
 
-        [Category("Основные")]
-        [Description("Количество кадров в тесте")]
-        [DisplayName("Количество")]
+        [Category(@"Основные")]
+        [Description(@"Количество кадров в тесте")]
+        [DisplayName(@"Количество")]
         public uint Count
         {
             get => _count;
             set => SetProperty(ref _count, value);
         }
 
-        [Category("Алгоритм")]
-        [Description("Время показа кадра по-умолчанию")]
-        [DisplayName("Время показа")]
+        [Category(@"Алгоритм")]
+        [Description(@"Время показа кадра по-умолчанию")]
+        [DisplayName(@"Время показа")]
         public int DefaultDelay
         {
             get => _defaultDelay;
             set => SetProperty(ref _defaultDelay, value);
         }
 
-        [Category("Алгоритм")]
-        [Description("Кадры показываются в случайном порядке")]
-        [DisplayName("Случайно")]
+        [Category(@"Алгоритм")]
+        [Description(@"Кадры показываются в случайном порядке")]
+        [DisplayName(@"Случайно")]
         [TypeConverter(typeof(BooleanToYesNoTypeConverter))]
         public bool Random
         {
@@ -52,9 +52,9 @@ namespace Recovery2.Models
             set => SetProperty(ref _random, value);
         }
 
-        [Category("Алгоритм")]
-        [Description("Показ черного экрана между кдрами и переход сразу к следующему кадру")]
-        [DisplayName("Черный экран")]
+        [Category(@"Алгоритм")]
+        [Description(@"Показ черного экрана между кдрами и переход сразу к следующему кадру")]
+        [DisplayName(@"Черный экран")]
         [TypeConverter(typeof(BooleanToYesNoTypeConverter))]
         public bool Blackscreen
         {
@@ -62,9 +62,9 @@ namespace Recovery2.Models
             set => SetProperty(ref _blackscreen, value);
         }
 
-        [Category("Алгоритм")]
-        [Description("Настройки черного экрана")]
-        [DisplayName("Черный кадр")]
+        [Category(@"Алгоритм")]
+        [Description(@"Настройки черного экрана")]
+        [DisplayName(@"Черный кадр")]
         [TypeConverter(typeof(BlackscreenExpandableConverter))]
         public ContestItem BlackscreenItem
         {
@@ -72,9 +72,9 @@ namespace Recovery2.Models
             set => SetProperty(ref _blackscreenItem, value);
         }
 
-        [Category("Алгоритм")]
-        [Description("Описание кадров для алгоритма")]
-        [DisplayName("Кадры")]
+        [Category(@"Алгоритм")]
+        [Description(@"Описание кадров для алгоритма")]
+        [DisplayName(@"Кадры")]
         [Editor(typeof(CustomCollectionEditor), typeof(UITypeEditor))]
         public ObservableCollection<ContestItem> Items
         {
