@@ -8,9 +8,9 @@ namespace Recovery2.Extensions
     {
         public override object ConvertTo(ITypeDescriptorContext context, CultureInfo culture, object value,
             Type destType) =>
-            (bool) value ? "Да" : "Нет";
+            (bool) value ? @"Да" : @"Нет";
 
         public override object ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, object value) =>
-            (string) value == "Да";
+            (string) value == @"Да";
     }
 }
