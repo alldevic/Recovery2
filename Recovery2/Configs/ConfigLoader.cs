@@ -142,7 +142,6 @@ namespace Recovery2.Configs
             SetAppSetting(nameof(_globalConfig.Title), _globalConfig.Title);
             _log.Trace($"{nameof(_globalConfig.Title)}='{_globalConfig.Title}'");
 
-
             SetAppSetting(nameof(_globalConfig.Count), _globalConfig.Count);
             _log.Trace($"{nameof(_globalConfig.Count)}='{_globalConfig.Count}'");
 

@@ -11,7 +11,9 @@ namespace Recovery2.Configs
         public string Name
         {
             get => (string) base["name"];
-            set => base["name"] = string.IsNullOrEmpty(value) ? Guid.NewGuid().ToString() : value;
+            set => base["name"] = string.IsNullOrEmpty(value)
+                ? Guid.NewGuid().ToString("N").Substring(0, 12)
+                : value;
         }
 
         [ConfigurationProperty("color", DefaultValue = "0xFFFFFFFF", IsKey = false, IsRequired = true)]
