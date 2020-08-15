@@ -13,45 +13,45 @@ namespace Recovery2.Configs
     public class ConfigLoader
     {
         private readonly Logger _log = LogManager.GetCurrentClassLogger();
-        private Configuration _config;
+        private readonly Configuration _config;
         private GlobalConfig _globalConfig;
 
         private readonly GlobalConfig _defaultConfig = new GlobalConfig()
         {
-            Title = "Название",
+            Title = @"Как нестандартно можно использовать карандаш?",
             Count = 30,
-            Random = false,
+            Random = true,
             DefaultDelay = 1000,
             Blackscreen = true,
-            BlackscreenItem = new ContestItem()
+            BlackscreenItem = new ContestItem
             {
                 Color = Color.Black,
-                Delay = 1000,
+                Delay = 0,
                 Key = 0,
-                Name = "Blackscreen"
+                Name = @"Blackscreen"
             },
             Items = new ObservableCollection<ContestItem>(new[]
             {
-                new ContestItem()
+                new ContestItem
                 {
-                    Name = "Красный",
+                    Name = @"Красный",
                     Color = Color.Red,
-                    Delay = 1000,
+                    Delay = 0,
                     Key = Keys.Space,
                 },
                 new ContestItem()
                 {
-                    Name = "Синий",
-                    Color = Color.Blue,
-                    Delay = 1000,
-                    Key = Keys.Enter,
+                    Name = @"Желтый",
+                    Color = Color.Yellow,
+                    Delay = 0,
+                    Key = Keys.None,
                 },
                 new ContestItem()
                 {
-                    Name = "Желтый",
-                    Color = Color.Yellow,
-                    Delay = 1000,
-                    Key = Keys.None,
+                    Name = @"Зеленый",
+                    Color = Color.Green,
+                    Delay = 0,
+                    Key = Keys.Enter,
                 },
             })
         };
