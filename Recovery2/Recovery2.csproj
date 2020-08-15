@@ -61,6 +61,7 @@
         <Compile Include="Configs\FramesConfigSection.cs" />
         <Compile Include="Extensions\BooleanToYesNoTypeConverter.cs" />
         <Compile Include="Extensions\EnumTypeConverter.cs" />
+        <Compile Include="Extensions\ObjectExtensions.cs" />
         <Compile Include="Extensions\Utils.cs" />
         <Compile Include="Models\ContestItem.cs" />
         <Compile Include="Models\Gender.cs" />

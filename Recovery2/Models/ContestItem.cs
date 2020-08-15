@@ -4,6 +4,7 @@ using System.Windows.Forms;
 
 namespace Recovery2.Models
 {
+    [TypeConverter(typeof(ExpandableObjectConverter)) ]
     public class ContestItem : NotifyPropertyChangedBase
     {
         private Color _color;
@@ -43,5 +44,7 @@ namespace Recovery2.Models
             get => _key;
             set => SetProperty(ref _key, value);
         }
+
+        public override string ToString() => $"{_name}, {_color}, {_delay}, {_key}";
     }
 }

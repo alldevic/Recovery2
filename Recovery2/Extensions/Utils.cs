@@ -40,8 +40,8 @@ namespace Recovery2.Extensions
 
             var attrs = memberInfo[0].GetCustomAttributes(typeof(DescriptionAttribute), false);
 
-            return attrs.Length > 0 
-                ? ((DescriptionAttribute) attrs[0]).Description 
+            return attrs.Length > 0
+                ? ((DescriptionAttribute) attrs[0]).Description
                 : enumerationValue.ToString();
         }
     }

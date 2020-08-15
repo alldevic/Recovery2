@@ -5,6 +5,7 @@ using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using NLog;
+using Recovery2.Extensions;
 using Recovery2.Models;
 
 namespace Recovery2.Configs
@@ -131,7 +132,7 @@ namespace Recovery2.Configs
 
         public void LoadDefaults()
         {
-            _globalConfig = _defaultConfig;
+            _globalConfig = _defaultConfig.Copy();
             Save();
         }
 
