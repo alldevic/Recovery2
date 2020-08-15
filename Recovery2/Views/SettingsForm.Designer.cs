@@ -86,7 +86,6 @@ namespace Recovery2.Views
             // 
             // ButtonDefault
             // 
-            this.ButtonDefault.DialogResult = System.Windows.Forms.DialogResult.Abort;
             this.ButtonDefault.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ButtonDefault.Location = new System.Drawing.Point(3, 412);
             this.ButtonDefault.Margin = new System.Windows.Forms.Padding(3, 0, 1, 0);
@@ -95,6 +94,7 @@ namespace Recovery2.Views
             this.ButtonDefault.TabIndex = 0;
             this.ButtonDefault.Text = "По умолчанию";
             this.ButtonDefault.UseVisualStyleBackColor = true;
+            this.ButtonDefault.Click += new System.EventHandler(this.ButtonDefault_Click);
             // 
             // GridConfig
             // 
@@ -109,7 +109,7 @@ namespace Recovery2.Views
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.CancelButton = ButtonCancel;
+            this.CancelButton = this.ButtonCancel;
             this.ClientSize = new System.Drawing.Size(304, 441);
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;

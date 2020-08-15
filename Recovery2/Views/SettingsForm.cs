@@ -15,5 +15,10 @@ namespace Recovery2.Views
         }
 
         private void SettingsForm_Load(object sender, EventArgs e) => GridConfig.SelectedObject = _config;
+
+        private void ButtonDefault_Click(object sender, EventArgs e) =>
+            DialogResult = MessageBox.Show(@"Сбросить параметры?", @"Сброс", MessageBoxButtons.YesNo) == DialogResult.Yes
+                ? DialogResult.Abort
+                : DialogResult.No;
     }
 }
