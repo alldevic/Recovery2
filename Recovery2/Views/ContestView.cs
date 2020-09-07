@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 using Recovery2.Models;
@@ -7,8 +8,15 @@ namespace Recovery2.Views
 {
     public partial class ContestView : Form
     {
-        public ContestView(GlobalConfig config)
+        private readonly GlobalConfig _config;
+        private readonly User _user;
+        private readonly Queue<ContestItem> _queue;
+        public ContestView(GlobalConfig config, User user, Queue<ContestItem> queue)
         {
+            _config = config;
+            _user = user;
+            _queue = queue;
+            
             InitializeComponent();
             ContestLabel.Text = config.Title;
             ScaleFont(ContestLabel);
@@ -20,7 +28,7 @@ namespace Recovery2.Views
             TopMost = true;
             WindowState = FormWindowState.Maximized;
             FormBorderStyle = FormBorderStyle.None;
-            BackColor = config.BlackscreenItem.Color;
+            BackColor = _config.BlackscreenItem.Color;
             ContestLabel.ForeColor = Color.FromArgb(
                 Color.White.A - BackColor.A,
                 Color.White.R - BackColor.R,
