@@ -14,6 +14,7 @@ namespace Recovery2.Models
         private bool _blackscreen;
         private ContestItem _blackscreenItem;
         private ObservableCollection<ContestItem> _items;
+        private bool _contestDebug;
 
         [Category(@"Основные")]
         [Description(@"Заголовок для окна с тестом")]
@@ -80,6 +81,15 @@ namespace Recovery2.Models
         {
             get => _items;
             set => SetProperty(ref _items, value);
+        }
+        
+        [Category(@"Отладка")]
+        [Description(@"Режим отладки для формы алгоритма")]
+        [DisplayName(@"Отладка")]
+        public bool ContestDebug
+        {
+            get => _contestDebug;
+            set => SetProperty(ref _contestDebug, value);
         }
     }
 }

@@ -24,6 +24,7 @@ namespace Recovery2.Configs
             Random = true,
             DefaultDelay = 1000,
             Blackscreen = true,
+            ContestDebug = false,
             BlackscreenItem = new ContestItem
             {
                 Color = Color.Black,
@@ -124,7 +125,11 @@ namespace Recovery2.Configs
 
                 SetProp(out var blscreen, nameof(_globalConfig.Blackscreen), Convert.ToBoolean,
                     _defaultConfig.Blackscreen);
-                _globalConfig.Random = blscreen;
+                _globalConfig.Blackscreen = blscreen;
+                
+                SetProp(out var contestDebug, nameof(_globalConfig.ContestDebug), Convert.ToBoolean,
+                    _defaultConfig.ContestDebug);
+                _globalConfig.ContestDebug = contestDebug;
 
                 _globalConfig.Items = new ObservableCollection<ContestItem>();
                 foreach (FrameElement frameItem in frames.FrameItems)
@@ -203,7 +208,10 @@ namespace Recovery2.Configs
 
             SetAppSetting(nameof(_globalConfig.Blackscreen), _globalConfig.Blackscreen);
             _log.Trace($"{nameof(_globalConfig.Blackscreen)}='{_globalConfig.Blackscreen}'");
-
+            
+            SetAppSetting(nameof(_globalConfig.ContestDebug), _globalConfig.ContestDebug);
+            _log.Trace($"{nameof(_globalConfig.ContestDebug)}='{_globalConfig.ContestDebug}'");
+            
             if (_config.GetSection("framesSettings") is FramesConfigSection frames)
             {
                 frames.FrameItems.Clear();

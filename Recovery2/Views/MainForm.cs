@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using NLog;
 using Recovery2.Configs;
@@ -66,7 +67,23 @@ namespace Recovery2.Views
 
         private void ButtonBegin_Click(object sender, EventArgs e)
         {
+            var tmp = new Queue<ContestItem>();
+            var t = new List<int>();
+            var rnd = new Random();
+            for (var i = 0; i < _configLoader.GlobalConfig.Count; i++)
+            {
+                t.Add(rnd.Next(1, _configLoader.GlobalConfig.Items.Count));
+            }
+            
+            for (var i = 0; i < _configLoader.GlobalConfig.Count; i++)
+            {
+                tmp.Enqueue(new ContestItem
+                {
+                    
+                });
+            }
             _log.Trace($"_user.LastName=\"{_user.LastName}\"");
+            new ContestView(_configLoader.GlobalConfig).Show();
         }
     }
 }
