@@ -7,7 +7,7 @@ namespace Recovery2
 {
     public static class CsvReport
     {
-        public static void WriteCSV<T>(IEnumerable<T> items, string path = "Report.csv")
+        public static void WriteCsv<T>(IEnumerable<T> items, string path = "Report.csv")
         {
             var itemType = typeof(T);
             var props = itemType.GetProperties(BindingFlags.Public | BindingFlags.Instance)

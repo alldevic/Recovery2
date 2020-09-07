@@ -80,9 +80,9 @@ namespace Recovery2.Views
 
             if (_queue.Count == 0)
             {
-                MessageBox.Show("Тестирование завершено!");
+                MessageBox.Show(@"Тестирование завершено!");
                 Close();
-                CsvReport.WriteCSV(_result.Results);
+                CsvReport.WriteCsv(_result.Results);
                 return;
             }
 
@@ -98,9 +98,9 @@ namespace Recovery2.Views
         {
             if (_queue.Count == 0)
             {
-                MessageBox.Show("Тестирование завершено!");
+                MessageBox.Show(@"Тестирование завершено!");
                 Close();
-                CsvReport.WriteCSV(_result.Results);
+                CsvReport.WriteCsv(_result.Results);
                 return;
             }
 
