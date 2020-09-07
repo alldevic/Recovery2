@@ -60,6 +60,7 @@
         <Compile Include="Configs\FrameElement.cs" />
         <Compile Include="Configs\FramesCollection.cs" />
         <Compile Include="Configs\FramesConfigSection.cs" />
+        <Compile Include="CsvReport.cs" />
         <Compile Include="Extensions\BlackscreenExpandableConverter.cs" />
         <Compile Include="Extensions\BooleanToYesNoTypeConverter.cs" />
         <Compile Include="Extensions\CustomCollectionEditor.cs" />
@@ -67,6 +68,8 @@
         <Compile Include="Extensions\ObjectExtensions.cs" />
         <Compile Include="Extensions\Utils.cs" />
         <Compile Include="Models\ContestItem.cs" />
+        <Compile Include="Models\ContestResult.cs" />
+        <Compile Include="Models\ContestResultItem.cs" />
         <Compile Include="Models\Gender.cs" />
         <Compile Include="Models\GlobalConfig.cs" />
         <Compile Include="Models\NotifyPropertyChangedBase.cs" />

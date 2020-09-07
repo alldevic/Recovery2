@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Forms;
 using NLog;
@@ -96,7 +95,15 @@ namespace Recovery2.Views
                 }
             }
 
-            new ContestView(_configLoader.GlobalConfig, _user, contestQueue).Show();
+            if (config.Count != 0)
+            {
+                new ContestView(_configLoader.GlobalConfig, _user, contestQueue).Show();
+            }
+            else
+            {
+                _log.Warn(@"Количество объектов равно 0!");
+                MessageBox.Show(@"Количество объектов равно 0!");
+            }
         }
 
         private ContestItem GetNext(ContestItem curr, GlobalConfig config)
