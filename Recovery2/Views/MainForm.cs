@@ -69,6 +69,13 @@ namespace Recovery2.Views
 
         private void ButtonBegin_Click(object sender, EventArgs e)
         {
+            if (!_user.IsValid())
+            {
+                _log.Info(@"Данные пациента заполнены не полностью!");
+                MessageBox.Show(@"Данные пациента заполнены не полностью!");
+                return;
+            }
+
             var config = _configLoader.GlobalConfig;
             var contestQueue = new Queue<ContestItem>();
             var tmpItem = config.Items.Last();
