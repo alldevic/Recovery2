@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
-using System.Linq;
-using System.Reflection;
+using CsvHelper;
 
 namespace Recovery2
 {
@@ -9,19 +9,25 @@ namespace Recovery2
     {
         public static void WriteCsv<T>(IEnumerable<T> items, string path = "Report.csv")
         {
-            var itemType = typeof(T);
-            var props = itemType.GetProperties(BindingFlags.Public | BindingFlags.Instance)
-                .OrderBy(p => p.Name);
-
-            
-            using (var writer = new StreamWriter(path))
+            if (File.Exists(path))
             {
-                writer.WriteLine(string.Join(";", props.Select(p => p.Name)));
-
-                foreach (var item in items)
+                using (var stream = File.Open(path, FileMode.Append))
+                using (var writer = new StreamWriter(stream))
+                using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture))
                 {
-                    writer.WriteLine(string.Join(";", props.Select(p => p.GetValue(item, null))));
+                    csv.Configuration.HasHeaderRecord = false;
+                    csv.Configuration.Delimiter = ";";
+                    csv.WriteRecords(items);
                 }
+
+                return;
+            }
+
+            using (var writer = new StreamWriter(path))
+            using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture))
+            {
+                csv.Configuration.Delimiter = ";";
+                csv.WriteRecords(items);
             }
         }
     }
