@@ -17,6 +17,26 @@
             Gender = Gender.Male;
         }
 
+        public bool IsValid()
+        {
+            if (string.IsNullOrEmpty(FirstName) || string.IsNullOrWhiteSpace(FirstName))
+            {
+                return false;
+            }
+
+            if (string.IsNullOrEmpty(SecondName) || string.IsNullOrWhiteSpace(SecondName))
+            {
+                return false;
+            }
+
+            if (string.IsNullOrEmpty(LastName) || string.IsNullOrWhiteSpace(LastName))
+            {
+                return false;
+            }
+
+            return Age != 0;
+        }
+
         public string FirstName
         {
             get => _firstName;

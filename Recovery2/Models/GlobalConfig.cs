@@ -9,7 +9,7 @@ namespace Recovery2.Models
     {
         private string _title;
         private uint _count;
-        private int _defaultDelay;
+        private uint _defaultDelay;
         private bool _random;
         private bool _blackscreen;
         private ContestItem _blackscreenItem;
@@ -37,7 +37,7 @@ namespace Recovery2.Models
         [Category(@"Алгоритм")]
         [Description(@"Время показа кадра по-умолчанию")]
         [DisplayName(@"Время показа")]
-        public int DefaultDelay
+        public uint DefaultDelay
         {
             get => _defaultDelay;
             set => SetProperty(ref _defaultDelay, value);

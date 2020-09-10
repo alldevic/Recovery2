@@ -117,7 +117,7 @@ namespace Recovery2.Configs
                 SetProp(out var count, nameof(_globalConfig.Count), uint.Parse, _defaultConfig.Count);
                 _globalConfig.Count = count;
 
-                SetProp(out var defdelay, nameof(_globalConfig.DefaultDelay), int.Parse, _defaultConfig.DefaultDelay);
+                SetProp(out var defdelay, nameof(_globalConfig.DefaultDelay), uint.Parse, _defaultConfig.DefaultDelay);
                 _globalConfig.DefaultDelay = defdelay;
 
                 SetProp(out var random, nameof(_globalConfig.Random), Convert.ToBoolean, _defaultConfig.Random);

@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using System.Windows.Forms;
 
 namespace Recovery2.Views
 {
@@ -34,10 +35,8 @@ namespace Recovery2.Views
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.ContestLabel = new System.Windows.Forms.Label();
             this.ContestImage = new System.Windows.Forms.PictureBox();
-            this.ContestTimer = new System.Timers.Timer();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize) (this.ContestImage)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize) (this.ContestTimer)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -79,11 +78,6 @@ namespace Recovery2.Views
             this.ContestImage.TabIndex = 1;
             this.ContestImage.TabStop = false;
             // 
-            // ContestTimer
-            // 
-            this.ContestTimer.AutoReset = false;
-            this.ContestTimer.SynchronizingObject = this;
-            // 
             // ContestView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -95,13 +89,12 @@ namespace Recovery2.Views
             this.ShowInTaskbar = false;
             this.Text = "ContestView";
             this.SizeChanged += new System.EventHandler(this.ContestView_SizeChanged);
+            this.KeyDown += new KeyEventHandler(this.ContestView_KeyDown);
+            this.FormClosing += new FormClosingEventHandler(this.ContestView_FormClosing);
             this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize) (this.ContestImage)).EndInit();
-            ((System.ComponentModel.ISupportInitialize) (this.ContestTimer)).EndInit();
             this.ResumeLayout(false);
         }
-
-        private System.Timers.Timer ContestTimer;
 
         private System.Windows.Forms.PictureBox ContestImage;
 

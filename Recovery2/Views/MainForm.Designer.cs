@@ -70,11 +70,11 @@ namespace Recovery2.Views
             this.tableLayoutPanel1.Controls.Add(this.TextFirstName, 2, 2);
             this.tableLayoutPanel1.Controls.Add(this.TextSecondName, 2, 3);
             this.tableLayoutPanel1.Controls.Add(this.TextAge, 2, 4);
-            this.tableLayoutPanel1.Controls.Add(this.ButtonClear, 5, 1);
-            this.tableLayoutPanel1.Controls.Add(this.ButtonConfig, 1, 11);
             this.tableLayoutPanel1.Controls.Add(this.ButtonBegin, 5, 11);
             this.tableLayoutPanel1.Controls.Add(this.RadioMale, 2, 5);
             this.tableLayoutPanel1.Controls.Add(this.RadioFemale, 3, 5);
+            this.tableLayoutPanel1.Controls.Add(this.ButtonClear, 1, 11);
+            this.tableLayoutPanel1.Controls.Add(this.ButtonConfig, 5, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -94,13 +94,13 @@ namespace Recovery2.Views
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(800, 450);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(784, 561);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // LabelLastName
             // 
             this.LabelLastName.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.LabelLastName.Location = new System.Drawing.Point(163, 82);
+            this.LabelLastName.Location = new System.Drawing.Point(155, 137);
             this.LabelLastName.Name = "LabelLastName";
             this.LabelLastName.Size = new System.Drawing.Size(90, 26);
             this.LabelLastName.TabIndex = 0;
@@ -110,7 +110,7 @@ namespace Recovery2.Views
             // LabelFirstName
             // 
             this.LabelFirstName.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.LabelFirstName.Location = new System.Drawing.Point(163, 108);
+            this.LabelFirstName.Location = new System.Drawing.Point(155, 163);
             this.LabelFirstName.Name = "LabelFirstName";
             this.LabelFirstName.Size = new System.Drawing.Size(90, 26);
             this.LabelFirstName.TabIndex = 1;
@@ -120,7 +120,7 @@ namespace Recovery2.Views
             // LabelSecondName
             // 
             this.LabelSecondName.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.LabelSecondName.Location = new System.Drawing.Point(163, 134);
+            this.LabelSecondName.Location = new System.Drawing.Point(155, 189);
             this.LabelSecondName.Name = "LabelSecondName";
             this.LabelSecondName.Size = new System.Drawing.Size(90, 26);
             this.LabelSecondName.TabIndex = 2;
@@ -130,7 +130,7 @@ namespace Recovery2.Views
             // LabelAge
             // 
             this.LabelAge.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.LabelAge.Location = new System.Drawing.Point(163, 160);
+            this.LabelAge.Location = new System.Drawing.Point(155, 215);
             this.LabelAge.Name = "LabelAge";
             this.LabelAge.Size = new System.Drawing.Size(90, 26);
             this.LabelAge.TabIndex = 3;
@@ -140,7 +140,7 @@ namespace Recovery2.Views
             // LabelGender
             // 
             this.LabelGender.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.LabelGender.Location = new System.Drawing.Point(163, 186);
+            this.LabelGender.Location = new System.Drawing.Point(155, 241);
             this.LabelGender.Name = "LabelGender";
             this.LabelGender.Size = new System.Drawing.Size(90, 26);
             this.LabelGender.TabIndex = 4;
@@ -151,7 +151,7 @@ namespace Recovery2.Views
             // 
             this.tableLayoutPanel1.SetColumnSpan(this.TextLastName, 2);
             this.TextLastName.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TextLastName.Location = new System.Drawing.Point(259, 85);
+            this.TextLastName.Location = new System.Drawing.Point(251, 140);
             this.TextLastName.MaxLength = 50;
             this.TextLastName.Name = "TextLastName";
             this.TextLastName.Size = new System.Drawing.Size(186, 20);
@@ -161,7 +161,7 @@ namespace Recovery2.Views
             // 
             this.tableLayoutPanel1.SetColumnSpan(this.TextFirstName, 2);
             this.TextFirstName.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TextFirstName.Location = new System.Drawing.Point(259, 111);
+            this.TextFirstName.Location = new System.Drawing.Point(251, 166);
             this.TextFirstName.MaxLength = 50;
             this.TextFirstName.Name = "TextFirstName";
             this.TextFirstName.Size = new System.Drawing.Size(186, 20);
@@ -171,7 +171,7 @@ namespace Recovery2.Views
             // 
             this.tableLayoutPanel1.SetColumnSpan(this.TextSecondName, 2);
             this.TextSecondName.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TextSecondName.Location = new System.Drawing.Point(259, 137);
+            this.TextSecondName.Location = new System.Drawing.Point(251, 192);
             this.TextSecondName.MaxLength = 50;
             this.TextSecondName.Name = "TextSecondName";
             this.TextSecondName.Size = new System.Drawing.Size(186, 20);
@@ -181,7 +181,7 @@ namespace Recovery2.Views
             // 
             this.tableLayoutPanel1.SetColumnSpan(this.TextAge, 2);
             this.TextAge.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TextAge.Location = new System.Drawing.Point(259, 163);
+            this.TextAge.Location = new System.Drawing.Point(251, 218);
             this.TextAge.MaxLength = 3;
             this.TextAge.Name = "TextAge";
             this.TextAge.Size = new System.Drawing.Size(186, 20);
@@ -191,7 +191,7 @@ namespace Recovery2.Views
             // ButtonClear
             // 
             this.ButtonClear.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ButtonClear.Location = new System.Drawing.Point(544, 82);
+            this.ButtonClear.Location = new System.Drawing.Point(152, 397);
             this.ButtonClear.Margin = new System.Windows.Forms.Padding(0);
             this.ButtonClear.Name = "ButtonClear";
             this.ButtonClear.Size = new System.Drawing.Size(96, 26);
@@ -203,7 +203,7 @@ namespace Recovery2.Views
             // ButtonConfig
             // 
             this.ButtonConfig.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ButtonConfig.Location = new System.Drawing.Point(160, 342);
+            this.ButtonConfig.Location = new System.Drawing.Point(536, 137);
             this.ButtonConfig.Margin = new System.Windows.Forms.Padding(0);
             this.ButtonConfig.Name = "ButtonConfig";
             this.ButtonConfig.Size = new System.Drawing.Size(96, 26);
@@ -215,7 +215,7 @@ namespace Recovery2.Views
             // ButtonBegin
             // 
             this.ButtonBegin.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ButtonBegin.Location = new System.Drawing.Point(544, 342);
+            this.ButtonBegin.Location = new System.Drawing.Point(536, 397);
             this.ButtonBegin.Margin = new System.Windows.Forms.Padding(0);
             this.ButtonBegin.Name = "ButtonBegin";
             this.ButtonBegin.Size = new System.Drawing.Size(96, 26);
@@ -226,7 +226,7 @@ namespace Recovery2.Views
             // 
             // RadioMale
             // 
-            this.RadioMale.Location = new System.Drawing.Point(259, 189);
+            this.RadioMale.Location = new System.Drawing.Point(251, 244);
             this.RadioMale.Name = "RadioMale";
             this.RadioMale.Size = new System.Drawing.Size(90, 20);
             this.RadioMale.TabIndex = 9;
@@ -236,7 +236,7 @@ namespace Recovery2.Views
             // 
             // RadioFemale
             // 
-            this.RadioFemale.Location = new System.Drawing.Point(355, 189);
+            this.RadioFemale.Location = new System.Drawing.Point(347, 244);
             this.RadioFemale.Name = "RadioFemale";
             this.RadioFemale.Size = new System.Drawing.Size(90, 20);
             this.RadioFemale.TabIndex = 10;
@@ -248,9 +248,9 @@ namespace Recovery2.Views
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Size = new System.Drawing.Size(800, 600);
-            this.MinimumSize = new System.Drawing.Size(800, 600);
+            this.ClientSize = new System.Drawing.Size(784, 561);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.MinimumSize = new System.Drawing.Size(800, 600);
             this.Name = "MainForm";
             this.Text = $"Восстановление {Application.ProductVersion.Substring(0, Application.ProductVersion.Length - 2)}";
             this.Load += new System.EventHandler(this.MainForm_Load);

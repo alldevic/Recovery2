@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 using NLog;
 using Recovery2.Configs;
@@ -13,6 +14,7 @@ namespace Recovery2.Views
         private static Logger _log;
         private User _user;
         private ConfigLoader _configLoader;
+        private Random _random = new Random();
 
         public MainForm()
         {
@@ -67,23 +69,59 @@ namespace Recovery2.Views
 
         private void ButtonBegin_Click(object sender, EventArgs e)
         {
-            var tmp = new Queue<ContestItem>();
-            var t = new List<int>();
-            var rnd = new Random();
-            for (var i = 0; i < _configLoader.GlobalConfig.Count; i++)
+            if (!_user.IsValid())
             {
-                t.Add(rnd.Next(1, _configLoader.GlobalConfig.Items.Count));
+                _log.Info(@"Данные пациента заполнены не полностью!");
+                MessageBox.Show(@"Данные пациента заполнены не полностью!");
+                return;
             }
-            
-            for (var i = 0; i < _configLoader.GlobalConfig.Count; i++)
+
+            var config = _configLoader.GlobalConfig;
+            var contestQueue = new Queue<ContestItem>();
+            var tmpItem = config.Items.Last();
+            for (var i = 0; i < config.Count; i++)
             {
-                tmp.Enqueue(new ContestItem
+                tmpItem = GetNext(tmpItem, config);
+                contestQueue.Enqueue(new ContestItem
                 {
-                    
+                    Color = tmpItem.Color,
+                    Delay = tmpItem.Delay == 0 ? config.DefaultDelay : tmpItem.Delay,
+                    Key = tmpItem.Key,
+                    Name = $"Item{i}"
                 });
+
+                if (config.Blackscreen)
+                {
+                    contestQueue.Enqueue(new ContestItem
+                    {
+                        Color = config.BlackscreenItem.Color,
+                        Delay = config.BlackscreenItem.Delay == 0 ? config.DefaultDelay : config.BlackscreenItem.Delay,
+                        Key = config.BlackscreenItem.Key,
+                        Name = $"Blackscreen{i}"
+                    });
+                }
             }
-            _log.Trace($"_user.LastName=\"{_user.LastName}\"");
-            new ContestView(_configLoader.GlobalConfig).Show();
+
+            if (config.Count != 0)
+            {
+                new ContestView(_configLoader.GlobalConfig, _user, contestQueue).Show();
+            }
+            else
+            {
+                _log.Warn(@"Количество объектов равно 0!");
+                MessageBox.Show(@"Количество объектов равно 0!");
+            }
+        }
+
+        private ContestItem GetNext(ContestItem curr, GlobalConfig config)
+        {
+            return config.Random
+                ? config.Items[_random.Next(config.Items.Count)]
+                : config.Items
+                    .SkipWhile(x => x != curr)
+                    .Skip(1)
+                    .DefaultIfEmpty(config.Items[0])
+                    .FirstOrDefault();
         }
     }
 }
