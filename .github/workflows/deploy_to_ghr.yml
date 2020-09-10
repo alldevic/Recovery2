@@ -2,7 +2,7 @@ name: Deploy to GitHub Releases
 
 on:
   push:
-    tags: v*
+    tags: '*.*.*'
 
 jobs:
   build:
@@ -13,15 +13,15 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       
-      - name: Setup Nuget.exe
-        uses: warrenbuckley/Setup-Nuget@v1
-        
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v1.0.1
+
+      - name: Setup NuGet
+        uses: NuGet/setup-nuget@v1.0.2  
+
       - name: Restore packages
         run: nuget restore $env:Solution_Path
-      
-      - name: Setup MSBuild.exe
-        uses: warrenbuckley/Setup-MSBuild@v1
-      
+     
       - name: Build with MSBuild
         run: msbuild  ${{ env.Solution_Path }} -p:Configuration=$env:Configuration 
         env:
@@ -34,7 +34,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.ref }}
+          release_name: Release v${{ github.ref }}
           draft: false
           prerelease: false
           
