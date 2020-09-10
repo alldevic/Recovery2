@@ -1,0 +1,48 @@
+name: Deploy to GitHub Releases
+
+on:
+  push:
+    tags: v*
+
+jobs:
+  build:
+    runs-on: windows-latest
+    env:
+      Solution_Path: Recovery2.sln
+      Solution_Name: Recovery2
+    steps:
+      - uses: actions/checkout@v1
+      
+      - name: Setup Nuget.exe
+        uses: warrenbuckley/Setup-Nuget@v1
+        
+      - name: Restore packages
+        run: nuget restore $env:Solution_Path
+      
+      - name: Setup MSBuild.exe
+        uses: warrenbuckley/Setup-MSBuild@v1
+      
+      - name: Build with MSBuild
+        run: msbuild  ${{ env.Solution_Path }} -p:Configuration=$env:Configuration 
+        env:
+          Configuration: Release
+
+      - name: Create Release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          draft: false
+          prerelease: false
+          
+      - name: Upload Release Asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ../${{ env.Solution_Name }}.${{ env.SOURCE_TAG }}.0.zip
+          asset_name: ${{ env.Solution_Name }}.${{ env.SOURCE_TAG }}.0.zip
+          asset_content_type: zip  
