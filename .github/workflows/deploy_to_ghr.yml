@@ -23,7 +23,7 @@ jobs:
         run: nuget restore $env:Solution_Path
      
       - name: Build with MSBuild
-        run: msbuild  ${{ env.Solution_Path }} -p:Configuration=$env:Configuration 
+        run: msbuild  ${{ env.Solution_Path }} -p:Configuration=$env:Configuration -p:Version=${{ github.ref }}.0
         env:
           Configuration: Release
 
