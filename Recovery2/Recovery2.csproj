@@ -171,7 +171,7 @@
         <GetAssemblyIdentity AssemblyFiles="$(TargetDir)\Recovery2.exe">
             <Output TaskParameter="Assemblies" ItemName="myAssemblyInfo"/>
         </GetAssemblyIdentity>
-        <Zip ZipFileName="$(OutDir)..\..\..\Recovery2.v%(myAssemblyInfo.Version).zip" WorkingDirectory="$(OutDir)" Files="@(ZipFiles)" Flatten="False" Quiet="true"/>
+        <Zip ZipFileName="$(OutDir)..\..\..\Recovery2_%(myAssemblyInfo.Version).zip" WorkingDirectory="$(OutDir)" Files="@(ZipFiles)" Flatten="False" Quiet="true"/>
     </Target>
 
 </Project>
