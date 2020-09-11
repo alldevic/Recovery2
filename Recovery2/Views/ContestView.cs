@@ -53,29 +53,16 @@ namespace Recovery2.Views
             _swtimer.Stop();
             _timer.Enabled = false;
             _timer.Stop();
-
-            if (!_curr.Name.StartsWith("Blackscreen"))
+            
+            if (!_curr.Name.StartsWith("Blackscreen") && !_fl)
             {
-                if (_curr.Key == Keys.None)
+                _result.Results.Add(new ContestResultItem
                 {
-                    _result.Results.Add(new ContestResultItem()
-                    {
-                        Elapsed = _swtimer.ElapsedMilliseconds,
-                        Item = _curr,
-                        Success = true,
-                    });
-                    _swtimer.Reset();
-                }
-                else
-                {
-                    _result.Results.Add(new ContestResultItem()
-                    {
-                        Elapsed = _swtimer.ElapsedMilliseconds,
-                        Item = _curr,
-                        Success = false,
-                    });
-                    _swtimer.Reset();
-                }
+                    Elapsed = _swtimer.ElapsedMilliseconds,
+                    Item = _curr,
+                    Success = _curr.Key == Keys.None,
+                });
+                _swtimer.Reset();
             }
 
             if (_queue.Count == 0)
@@ -90,8 +77,10 @@ namespace Recovery2.Views
             ContestImage.BackColor = _curr.Color;
             _timer.Interval = (int) _curr.Delay;
             _swtimer.Reset();
+            _timer.Enabled = true;
             _timer.Start();
             _swtimer.Start();
+            _fl = false;
         }
 
         private void StartRunner()
@@ -99,8 +88,8 @@ namespace Recovery2.Views
             if (_queue.Count == 0)
             {
                 MessageBox.Show(@"Тестирование завершено!");
-                Close();
                 CsvReport.WriteCsv(_result.Results);
+                Close();
                 return;
             }
 
@@ -140,37 +129,24 @@ namespace Recovery2.Views
             _timer.Dispose();
         }
 
+        private bool _fl;
+
         private void ContestView_KeyDown(object sender, KeyEventArgs e)
         {
-            if (_curr.Name.StartsWith("Blackscreen"))
+            if (_curr.Name.StartsWith("Blackscreen") || _fl)
             {
-                e.Handled = true;
                 return;
             }
 
-            if (e.KeyCode == _curr.Key)
-            {
-                _swtimer.Stop();
-                _result.Results.Add(new ContestResultItem()
-                {
-                    Elapsed = _swtimer.ElapsedMilliseconds,
-                    Item = _curr,
-                    Success = true,
-                });
-                _swtimer.Reset();
-                e.Handled = true;
-                return;
-            }
-
+            _fl = true;
             _swtimer.Stop();
-            _result.Results.Add(new ContestResultItem()
+
+            _result.Results.Add(new ContestResultItem
             {
                 Elapsed = _swtimer.ElapsedMilliseconds,
                 Item = _curr,
-                Success = false,
+                Success = e.KeyCode == _curr.Key,
             });
-            _swtimer.Reset();
-            e.Handled = true;
         }
     }
 }
