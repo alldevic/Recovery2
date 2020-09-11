@@ -52,7 +52,6 @@ namespace Recovery2.Models
                     Results.IndexOf(x) != 0 && x.Success && !Results[Results.IndexOf(x) - 1].Success)
                 .Average(x => x.Elapsed);
 
-
         [Ignore] public List<ContestResultItem> Results { get; set; }
     }
 }
