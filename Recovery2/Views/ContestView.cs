@@ -40,11 +40,12 @@ namespace Recovery2.Views
                     Color.White.B - BackColor.B);
             }
 
-
-            _result = new ContestResult(_user, config)
+            _result = new ContestResult(_user)
             {
-                Results = new List<ContestResultItem>()
+                Results = new List<ContestResultItem>(),
+                Created = DateTime.Now
             };
+
             ContestImage.Focus();
             StartRunner();
         }
