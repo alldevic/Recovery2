@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 using Recovery2.Models;
 
@@ -53,7 +54,7 @@ namespace Recovery2.Views
             _swtimer.Stop();
             _timer.Enabled = false;
             _timer.Stop();
-            
+
             if (!_curr.Name.StartsWith("Blackscreen") && !_fl)
             {
                 _result.Results.Add(new ContestResultItem
@@ -67,7 +68,10 @@ namespace Recovery2.Views
 
             if (_queue.Count == 0)
             {
-                MessageBox.Show(@"Тестирование завершено!");
+                var pos = _result.Results.Count(x => x.Success);
+                var all = _result.Results.Count;
+                MessageBox.Show($@"{_user.LastName} {_user.FirstName} {_user.SecondName}{Environment.NewLine}Правильно: {pos}{Environment.NewLine}Всего: {all}",
+                    @"Тестирование завершено", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Close();
                 CsvReport.WriteCsv(_result.Results);
                 return;
@@ -87,7 +91,10 @@ namespace Recovery2.Views
         {
             if (_queue.Count == 0)
             {
-                MessageBox.Show(@"Тестирование завершено!");
+                var pos = _result.Results.Count(x => x.Success);
+                var all = _result.Results.Count;
+                MessageBox.Show($@"{_user.LastName} {_user.FirstName} {_user.SecondName}{Environment.NewLine}Правильно: {pos}{Environment.NewLine}Всего: {all}",
+                    @"Тестирование завершено", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 CsvReport.WriteCsv(_result.Results);
                 Close();
                 return;
