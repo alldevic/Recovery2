@@ -25,6 +25,7 @@ namespace Recovery2.Configs
             DefaultDelay = 1000,
             Blackscreen = true,
             ContestDebug = false,
+            HideCursor = true,
             BlackscreenItem = new ContestItem
             {
                 Color = Color.Black,
@@ -123,6 +124,9 @@ namespace Recovery2.Configs
                 SetProp(out var random, nameof(_globalConfig.Random), Convert.ToBoolean, _defaultConfig.Random);
                 _globalConfig.Random = random;
 
+                SetProp(out var hideCursor, nameof(_globalConfig.HideCursor), Convert.ToBoolean, _defaultConfig.HideCursor);
+                _globalConfig.HideCursor = hideCursor;
+                
                 SetProp(out var blscreen, nameof(_globalConfig.Blackscreen), Convert.ToBoolean,
                     _defaultConfig.Blackscreen);
                 _globalConfig.Blackscreen = blscreen;
@@ -205,7 +209,10 @@ namespace Recovery2.Configs
 
             SetAppSetting(nameof(_globalConfig.Random), _globalConfig.Random);
             _log.Trace($"{nameof(_globalConfig.Random)}='{_globalConfig.Random}'");
-
+            
+            SetAppSetting(nameof(_globalConfig.HideCursor), _globalConfig.HideCursor);
+            _log.Trace($"{nameof(_globalConfig.HideCursor)}='{_globalConfig.HideCursor}'");
+            
             SetAppSetting(nameof(_globalConfig.Blackscreen), _globalConfig.Blackscreen);
             _log.Trace($"{nameof(_globalConfig.Blackscreen)}='{_globalConfig.Blackscreen}'");
             

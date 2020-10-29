@@ -11,6 +11,7 @@ namespace Recovery2.Models
         private uint _count;
         private uint _defaultDelay;
         private bool _random;
+        private bool _hideCursor;
         private bool _blackscreen;
         private ContestItem _blackscreenItem;
         private ObservableCollection<ContestItem> _items;
@@ -33,6 +34,17 @@ namespace Recovery2.Models
             get => _count;
             set => SetProperty(ref _count, value);
         }
+        
+        [Category(@"Основные")]
+        [Description(@"Скрывать курсор в режиме тестирования")]
+        [DisplayName(@"Скрывать курсор")]
+        [TypeConverter(typeof(BooleanToYesNoTypeConverter))]
+        public bool HideCursor
+        {
+            get => _hideCursor;
+            set => SetProperty(ref _hideCursor, value);
+        }
+        
 
         [Category(@"Алгоритм")]
         [Description(@"Время показа кадра по-умолчанию")]
@@ -86,6 +98,7 @@ namespace Recovery2.Models
         [Category(@"Отладка")]
         [Description(@"Режим отладки для формы алгоритма")]
         [DisplayName(@"Отладка")]
+        [TypeConverter(typeof(BooleanToYesNoTypeConverter))]
         public bool ContestDebug
         {
             get => _contestDebug;

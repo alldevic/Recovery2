@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
+using System.Linq;
 using System.Text;
 using CsvHelper;
 
@@ -18,7 +19,11 @@ namespace Recovery2
                 {
                     csv.Configuration.HasHeaderRecord = false;
                     csv.Configuration.Delimiter = ";";
-                    csv.WriteRecords(items);
+                    var lst = items.ToList();
+                    if (lst.Count > 0)
+                    {
+                        csv.WriteRecords(lst);
+                    }
                 }
 
                 return;

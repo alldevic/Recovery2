@@ -21,6 +21,10 @@ namespace Recovery2.Views
 
         public ContestView(GlobalConfig config, User user, Queue<ContestItem> queue)
         {
+            if (!config.ContestDebug && config.HideCursor)
+            {
+                Cursor.Hide();
+            }
             _user = user;
             _queue = queue;
             _timer.Tick += TimerOnTick;
@@ -105,6 +109,7 @@ namespace Recovery2.Views
         {
             var pos = _result.Results.Count(x => x.Success);
             var all = _result.Results.Count;
+            Cursor.Show();
             MessageBox.Show(
                 $@"{_user.LastName} {_user.FirstName} {_user.SecondName}{Environment.NewLine}Правильно: {pos}{Environment.NewLine}Всего: {all}",
                 @"Тестирование завершено", MessageBoxButtons.OK, MessageBoxIcon.Information);
