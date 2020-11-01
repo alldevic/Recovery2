@@ -33,6 +33,7 @@ namespace Recovery2.Views
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.LabelLastName = new System.Windows.Forms.Label();
             this.LabelFirstName = new System.Windows.Forms.Label();
@@ -43,11 +44,11 @@ namespace Recovery2.Views
             this.TextFirstName = new System.Windows.Forms.TextBox();
             this.TextSecondName = new System.Windows.Forms.TextBox();
             this.TextAge = new System.Windows.Forms.TextBox();
-            this.ButtonClear = new System.Windows.Forms.Button();
-            this.ButtonConfig = new System.Windows.Forms.Button();
             this.ButtonBegin = new System.Windows.Forms.Button();
             this.RadioMale = new System.Windows.Forms.RadioButton();
             this.RadioFemale = new System.Windows.Forms.RadioButton();
+            this.ButtonClear = new System.Windows.Forms.Button();
+            this.ButtonConfig = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -188,30 +189,6 @@ namespace Recovery2.Views
             this.TextAge.TabIndex = 8;
             this.TextAge.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextAge_KeyPress);
             // 
-            // ButtonClear
-            // 
-            this.ButtonClear.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ButtonClear.Location = new System.Drawing.Point(152, 397);
-            this.ButtonClear.Margin = new System.Windows.Forms.Padding(0);
-            this.ButtonClear.Name = "ButtonClear";
-            this.ButtonClear.Size = new System.Drawing.Size(96, 26);
-            this.ButtonClear.TabIndex = 11;
-            this.ButtonClear.Text = "Очистить";
-            this.ButtonClear.UseVisualStyleBackColor = true;
-            this.ButtonClear.Click += new System.EventHandler(this.ButtonClear_Click);
-            // 
-            // ButtonConfig
-            // 
-            this.ButtonConfig.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ButtonConfig.Location = new System.Drawing.Point(536, 137);
-            this.ButtonConfig.Margin = new System.Windows.Forms.Padding(0);
-            this.ButtonConfig.Name = "ButtonConfig";
-            this.ButtonConfig.Size = new System.Drawing.Size(96, 26);
-            this.ButtonConfig.TabIndex = 12;
-            this.ButtonConfig.Text = "Параметры";
-            this.ButtonConfig.UseVisualStyleBackColor = true;
-            this.ButtonConfig.Click += new System.EventHandler(this.ButtonConfig_Click);
-            // 
             // ButtonBegin
             // 
             this.ButtonBegin.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -244,15 +221,40 @@ namespace Recovery2.Views
             this.RadioFemale.Text = "Женский";
             this.RadioFemale.UseVisualStyleBackColor = true;
             // 
+            // ButtonClear
+            // 
+            this.ButtonClear.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ButtonClear.Location = new System.Drawing.Point(152, 397);
+            this.ButtonClear.Margin = new System.Windows.Forms.Padding(0);
+            this.ButtonClear.Name = "ButtonClear";
+            this.ButtonClear.Size = new System.Drawing.Size(96, 26);
+            this.ButtonClear.TabIndex = 11;
+            this.ButtonClear.Text = "Очистить";
+            this.ButtonClear.UseVisualStyleBackColor = true;
+            this.ButtonClear.Click += new System.EventHandler(this.ButtonClear_Click);
+            // 
+            // ButtonConfig
+            // 
+            this.ButtonConfig.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ButtonConfig.Location = new System.Drawing.Point(536, 137);
+            this.ButtonConfig.Margin = new System.Windows.Forms.Padding(0);
+            this.ButtonConfig.Name = "ButtonConfig";
+            this.ButtonConfig.Size = new System.Drawing.Size(96, 26);
+            this.ButtonConfig.TabIndex = 12;
+            this.ButtonConfig.Text = "Параметры";
+            this.ButtonConfig.UseVisualStyleBackColor = true;
+            this.ButtonConfig.Click += new System.EventHandler(this.ButtonConfig_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 561);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.Icon = ((System.Drawing.Icon) (resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(800, 600);
             this.Name = "MainForm";
-            this.Text = $"Восстановление {Application.ProductVersion.Substring(0, Application.ProductVersion.Length - 2)}";
+            this.Text = "Восстановление";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
