@@ -26,6 +26,7 @@ namespace Recovery2.Configs
             Blackscreen = true,
             ContestDebug = false,
             HideCursor = true,
+            CloseKey = Keys.Escape,
             BlackscreenItem = new ContestItem
             {
                 Color = Color.Black,
@@ -118,19 +119,24 @@ namespace Recovery2.Configs
                 SetProp(out var count, nameof(_globalConfig.Count), uint.Parse, _defaultConfig.Count);
                 _globalConfig.Count = count;
 
+                SetProp(out var closeKey, nameof(_globalConfig.CloseKey), s => (Keys) Enum.Parse(typeof(Keys), s),
+                    _defaultConfig.CloseKey);
+                _globalConfig.CloseKey = closeKey;
+
                 SetProp(out var defdelay, nameof(_globalConfig.DefaultDelay), uint.Parse, _defaultConfig.DefaultDelay);
                 _globalConfig.DefaultDelay = defdelay;
 
                 SetProp(out var random, nameof(_globalConfig.Random), Convert.ToBoolean, _defaultConfig.Random);
                 _globalConfig.Random = random;
 
-                SetProp(out var hideCursor, nameof(_globalConfig.HideCursor), Convert.ToBoolean, _defaultConfig.HideCursor);
+                SetProp(out var hideCursor, nameof(_globalConfig.HideCursor), Convert.ToBoolean,
+                    _defaultConfig.HideCursor);
                 _globalConfig.HideCursor = hideCursor;
-                
+
                 SetProp(out var blscreen, nameof(_globalConfig.Blackscreen), Convert.ToBoolean,
                     _defaultConfig.Blackscreen);
                 _globalConfig.Blackscreen = blscreen;
-                
+
                 SetProp(out var contestDebug, nameof(_globalConfig.ContestDebug), Convert.ToBoolean,
                     _defaultConfig.ContestDebug);
                 _globalConfig.ContestDebug = contestDebug;
@@ -183,6 +189,7 @@ namespace Recovery2.Configs
                 _log.Warn("Не обнаружены настройки для фреймов, используются стандартные настройки");
                 LoadDefaults();
             }
+
             _log.Info("Загрузка настроек завершена");
         }
 
@@ -207,18 +214,21 @@ namespace Recovery2.Configs
             SetAppSetting(nameof(_globalConfig.DefaultDelay), _globalConfig.DefaultDelay);
             _log.Trace($"{nameof(_globalConfig.DefaultDelay)}='{_globalConfig.DefaultDelay}'");
 
+            SetAppSetting(nameof(_globalConfig.CloseKey), _globalConfig.CloseKey);
+            _log.Trace($"{nameof(_globalConfig.CloseKey)}='{_globalConfig.CloseKey}'");
+
             SetAppSetting(nameof(_globalConfig.Random), _globalConfig.Random);
             _log.Trace($"{nameof(_globalConfig.Random)}='{_globalConfig.Random}'");
-            
+
             SetAppSetting(nameof(_globalConfig.HideCursor), _globalConfig.HideCursor);
             _log.Trace($"{nameof(_globalConfig.HideCursor)}='{_globalConfig.HideCursor}'");
-            
+
             SetAppSetting(nameof(_globalConfig.Blackscreen), _globalConfig.Blackscreen);
             _log.Trace($"{nameof(_globalConfig.Blackscreen)}='{_globalConfig.Blackscreen}'");
-            
+
             SetAppSetting(nameof(_globalConfig.ContestDebug), _globalConfig.ContestDebug);
             _log.Trace($"{nameof(_globalConfig.ContestDebug)}='{_globalConfig.ContestDebug}'");
-            
+
             if (_config.GetSection("framesSettings") is FramesConfigSection frames)
             {
                 frames.FrameItems.Clear();
