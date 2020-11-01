@@ -1,6 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Drawing.Design;
+using System.Windows.Forms;
 using Recovery2.Extensions;
 
 namespace Recovery2.Models
@@ -16,6 +17,7 @@ namespace Recovery2.Models
         private ContestItem _blackscreenItem;
         private ObservableCollection<ContestItem> _items;
         private bool _contestDebug;
+        private Keys _closeKey;
 
         [Category(@"Основные")]
         [Description(@"Заголовок для окна с тестом")]
@@ -43,6 +45,15 @@ namespace Recovery2.Models
         {
             get => _hideCursor;
             set => SetProperty(ref _hideCursor, value);
+        }
+
+        [Category(@"Основные")]
+        [Description(@"Кнопка для прерывания тестирования")]
+        [DisplayName(@"Кнопка прерывания")]
+        public Keys CloseKey
+        {
+            get => _closeKey;
+            set => SetProperty(ref _closeKey, value);
         }
         
 
