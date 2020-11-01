@@ -9,7 +9,6 @@ namespace Recovery2.Models
     {
         private User _user;
 
-
         public ContestResult(User user)
         {
             _user = user;
@@ -46,11 +45,23 @@ namespace Recovery2.Models
                 .Average(x => x.Elapsed);
 
         [Name(@"Ср. время на правильный после неправильного"), Index(14)]
-        public int TimmPosNegCount => Count == 0 || NegativeCount == 0 || PositiveCount == 0
-            ? 0
-            : (int) Results.ToList().Where(x =>
-                    Results.IndexOf(x) != 0 && x.Success && !Results[Results.IndexOf(x) - 1].Success)
-                .Average(x => x.Elapsed);
+        public int TimmPosNegCount
+        {
+            get
+            {
+                if (Count == 0 || NegativeCount == 0 || PositiveCount == 0)
+                    return 0;
+
+                var res = Results.ToList().Where(x =>
+                    Results.IndexOf(x) != 0 && x.Success && !Results[Results.IndexOf(x) - 1].Success).ToList();
+
+                if (!res.Any())
+                {
+                    return 0;
+                }
+                return (int) res.Average(x => x.Elapsed);
+            }
+        }
 
         [Ignore] public List<ContestResultItem> Results { get; set; }
     }
