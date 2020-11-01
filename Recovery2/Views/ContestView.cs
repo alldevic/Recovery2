@@ -12,6 +12,8 @@ namespace Recovery2.Views
     {
         private readonly User _user;
         private readonly Queue<ContestItem> _queue;
+        private readonly Keys _closeKey;
+
 
         private readonly Stopwatch _swt = new Stopwatch();
         private readonly Timer _timer = new Timer();
@@ -25,11 +27,13 @@ namespace Recovery2.Views
             {
                 Cursor.Hide();
             }
+
             _user = user;
             _queue = queue;
             _timer.Tick += TimerOnTick;
             InitializeComponent();
             ContestLabel.Text = config.Title;
+            _closeKey = config.CloseKey;
             ScaleFont(ContestLabel);
             if (!config.ContestDebug)
             {
@@ -149,6 +153,15 @@ namespace Recovery2.Views
 
         private void ContestView_KeyDown(object sender, KeyEventArgs e)
         {
+            if (e.KeyCode == _closeKey)
+            {
+                _timer.Stop();
+                _swt.Stop();
+                GenerateReport();
+                Close();
+                return;
+            }
+
             if (_curr.Name.StartsWith(@"Blackscreen") || _fl)
             {
                 return;
