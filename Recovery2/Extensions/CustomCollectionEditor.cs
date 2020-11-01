@@ -16,6 +16,7 @@ namespace Recovery2.Extensions
         {
             var form = base.CreateCollectionForm();
             form.StartPosition = FormStartPosition.CenterParent;
+            form.HelpButton = false;
             var formType = form.GetType();
             var fieldInfo = formType.GetField("propertyBrowser", BindingFlags.NonPublic | BindingFlags.Instance);
 
