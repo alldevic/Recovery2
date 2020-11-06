@@ -10,6 +10,9 @@ jobs:
     env:
       Solution_Path: Recovery2.sln
       Solution_Name: Recovery2
+    outputs:
+      version: ${{ steps.get_version.outputs.VERSION }}
+      asset_name: ${{ env.Solution_Name }}_${{ steps.get_version.outputs.VERSION }}.0.zip
     steps:
       - uses: actions/checkout@v1
 
@@ -31,6 +34,22 @@ jobs:
         run: msbuild  ${{ env.Solution_Path }} -p:Configuration=$env:Configuration -p:Version=${{ steps.get_version.outputs.VERSION }}.0
         env:
           Configuration: Release
+      
+      - name: Upload output file
+        uses: actions/upload-artifact@v2.2.0
+        with:
+          name: build-zip
+          path: ./${{ env.Solution_Name }}_${{ steps.get_version.outputs.VERSION }}.0.zip
+  
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download a build zip
+        id: download_zip
+        uses: actions/download-artifact@v2
+        with:
+          name: build-zip
 
       - name: Create Release
         id: create_release
@@ -39,7 +58,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: ${{ github.ref }}
-          release_name: ${{ steps.get_version.outputs.VERSION }}
+          release_name: ${{ needs.build.outputs.version }}
           draft: false
           prerelease: false
 
@@ -50,6 +69,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./${{ env.Solution_Name }}_${{ steps.get_version.outputs.VERSION }}.0.zip
-          asset_name: ${{ env.Solution_Name }}_${{ steps.get_version.outputs.VERSION }}.0.zip
+          asset_path: ${{ steps.download_zip.outputs.download-path }}/${{ needs.build.outputs.asset_name }}
+          asset_name: ${{ needs.build.outputs.asset_name }}
           asset_content_type: application/zip
