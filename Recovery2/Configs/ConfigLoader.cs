@@ -135,15 +135,15 @@ namespace Recovery2.Configs
                 _globalConfig.FrameSize = new FrameSize();
                 if (_config.GetSection("framesize") is FrameSizeConfigSection frameSizeConfigSection)
                 {
+                    _globalConfig.FrameSize.Type = frameSizeConfigSection.FrameSize.Type;
                     _globalConfig.FrameSize.Width = frameSizeConfigSection.FrameSize.Width;
                     _globalConfig.FrameSize.Height = frameSizeConfigSection.FrameSize.Height;
-                    _globalConfig.FrameSize.Type = frameSizeConfigSection.FrameSize.Type;
                 }
                 else
                 {
+                    _globalConfig.FrameSize.Type = _defaultConfig.FrameSize.Type;
                     _globalConfig.FrameSize.Width = _defaultConfig.FrameSize.Width;
                     _globalConfig.FrameSize.Height = _defaultConfig.FrameSize.Height;
-                    _globalConfig.FrameSize.Type = _defaultConfig.FrameSize.Type;
                 }
                 
                 SetProp(out var random, nameof(_globalConfig.Random), Convert.ToBoolean, _defaultConfig.Random);
@@ -253,9 +253,9 @@ namespace Recovery2.Configs
             {
                 framesize.FrameSize = new FrameSizeElement
                 {
+                    Type = _globalConfig.FrameSize.Type,
                     Width = _globalConfig.FrameSize.Width,
-                    Height = _globalConfig.FrameSize.Height,
-                    Type = _globalConfig.FrameSize.Type
+                    Height = _globalConfig.FrameSize.Height
                 };
             }
             
