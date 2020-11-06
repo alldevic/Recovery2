@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.Linq;
 
-namespace PropertyGridExtensions
+namespace Recovery2.Extensions
 {
     public class BlackscreenExpandableConverter : ExpandableObjectConverter
     {

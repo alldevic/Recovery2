@@ -2,9 +2,9 @@
 using System.Windows.Forms;
 using System.Windows.Forms.Design;
 
-namespace PropertyGridExtensions
+namespace Recovery2.Extensions
 {
-    public class CustomShortcutKeysEditor : ShortcutKeysEditor
+    class CustomShortcutKeysEditor : ShortcutKeysEditor
     {
         public CustomShortcutKeysEditor()
         {

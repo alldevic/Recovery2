@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.Globalization;
 
-namespace PropertyGridExtensions
+namespace Recovery2.Extensions
 {
     class EnumTypeConverter : EnumConverter
     {

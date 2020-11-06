@@ -2,7 +2,7 @@
 using System.Drawing;
 using System.Drawing.Design;
 using System.Windows.Forms;
-using PropertyGridExtensions;
+using Recovery2.Extensions;
 
 namespace Recovery2.Models
 {

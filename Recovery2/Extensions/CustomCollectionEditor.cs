@@ -3,9 +3,9 @@ using System.ComponentModel.Design;
 using System.Reflection;
 using System.Windows.Forms;
 
-namespace PropertyGridExtensions
+namespace Recovery2.Extensions
 {
-    public class CustomCollectionEditor : CollectionEditor
+    internal class CustomCollectionEditor : CollectionEditor
     {
         public CustomCollectionEditor(Type type)
             : base(type)
