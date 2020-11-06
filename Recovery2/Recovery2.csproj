@@ -80,10 +80,6 @@
         <Compile Include="Configs\FramesCollection.cs" />
         <Compile Include="Configs\FramesConfigSection.cs" />
         <Compile Include="CsvReport.cs" />
-        <Compile Include="Extensions\BlackscreenExpandableConverter.cs" />
-        <Compile Include="Extensions\BooleanToYesNoTypeConverter.cs" />
-        <Compile Include="Extensions\CustomCollectionEditor.cs" />
-        <Compile Include="Extensions\EnumTypeConverter.cs" />
         <Compile Include="Extensions\ObjectExtensions.cs" />
         <Compile Include="Extensions\Utils.cs" />
         <Compile Include="Models\ContestItem.cs" />
@@ -137,6 +133,12 @@
     </ItemGroup>
     <ItemGroup>
       <Content Include="Icons\app.ico" />
+    </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\PropertyGridExtensions\PropertyGridExtensions.csproj">
+        <Project>{e5b3672c-4d39-4191-97cb-94bac4354d67}</Project>
+        <Name>PropertyGridExtensions</Name>
+      </ProjectReference>
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
     <Import Project="..\packages\ILRepack.Lib.MSBuild.Task.2.0.18.1\build\ILRepack.Lib.MSBuild.Task.targets" Condition="Exists('..\packages\ILRepack.Lib.MSBuild.Task.2.0.18.1\build\ILRepack.Lib.MSBuild.Task.targets')" />

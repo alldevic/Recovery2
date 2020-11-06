@@ -2,11 +2,11 @@
 using System.ComponentModel;
 using System.Globalization;
 
-namespace Recovery2.Extensions
+namespace PropertyGridExtensions
 {
     class EnumTypeConverter : EnumConverter
     {
-        private Type _enumType;
+        private readonly Type _enumType;
 
         /// <summary>
         /// Initializing instance

@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Recovery2", "Recovery2\Recovery2.csproj", "{2C575F88-5133-41C2-BD5A-6B07426E23FF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PropertyGridExtensions", "PropertyGridExtensions\PropertyGridExtensions.csproj", "{E5B3672C-4D39-4191-97CB-94BAC4354D67}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{2C575F88-5133-41C2-BD5A-6B07426E23FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2C575F88-5133-41C2-BD5A-6B07426E23FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2C575F88-5133-41C2-BD5A-6B07426E23FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E5B3672C-4D39-4191-97CB-94BAC4354D67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5B3672C-4D39-4191-97CB-94BAC4354D67}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E5B3672C-4D39-4191-97CB-94BAC4354D67}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E5B3672C-4D39-4191-97CB-94BAC4354D67}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

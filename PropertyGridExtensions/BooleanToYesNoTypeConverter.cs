@@ -2,9 +2,9 @@
 using System.ComponentModel;
 using System.Globalization;
 
-namespace Recovery2.Extensions
+namespace PropertyGridExtensions
 {
-    class BooleanToYesNoTypeConverter : BooleanConverter
+    public class BooleanToYesNoTypeConverter : BooleanConverter
     {
         public override object ConvertTo(ITypeDescriptorContext context, CultureInfo culture, object value,
             Type destType) =>

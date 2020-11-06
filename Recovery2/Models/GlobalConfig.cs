@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.Drawing.Design;
 using System.Windows.Forms;
 using Recovery2.Extensions;
+using PropertyGridExtensions;
 
 namespace Recovery2.Models
 {
