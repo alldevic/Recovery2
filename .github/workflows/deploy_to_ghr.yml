@@ -2,7 +2,7 @@ name: Deploy to GitHub Releases
 
 on:
   push:
-    tags: "*.*.*"
+    tags: '*.*.*'
 
 jobs:
   build:
@@ -45,6 +45,14 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2.3.4
+
+      - name: Conventional Changelog Action
+        id: changelog
+        uses: metcalfc/changelog-generator@v0.4.4
+        with:
+          myToken: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Download a build zip
         id: download_zip
         uses: actions/download-artifact@v2.0.5
@@ -59,6 +67,7 @@ jobs:
         with:
           tag_name: ${{ github.ref }}
           release_name: ${{ needs.build.outputs.version }}
+          body: ${{ steps.changelog.outputs.changelog }}
           draft: false
           prerelease: false
 
