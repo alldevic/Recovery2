@@ -1,6 +1,8 @@
 ﻿using System.ComponentModel;
 using System.Drawing;
+using System.Drawing.Design;
 using System.Windows.Forms;
+using PropertyGridExtensions;
 
 namespace Recovery2.Models
 {
@@ -38,6 +40,7 @@ namespace Recovery2.Models
         [Description(
             "Клавиша, которую необходимо нажать для успешного прохождния. None - успешное прохождение без нажатия")]
         [DisplayName("Клавиша")]
+        [Editor(typeof(CustomShortcutKeysEditor), typeof(UITypeEditor))]
         public Keys Key
         {
             get => _key;

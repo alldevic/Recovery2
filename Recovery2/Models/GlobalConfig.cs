@@ -2,7 +2,6 @@
 using System.ComponentModel;
 using System.Drawing.Design;
 using System.Windows.Forms;
-using Recovery2.Extensions;
 using PropertyGridExtensions;
 
 namespace Recovery2.Models
@@ -51,6 +50,8 @@ namespace Recovery2.Models
         [Category(@"Основные")]
         [Description(@"Кнопка для прерывания тестирования")]
         [DisplayName(@"Кнопка прерывания")]
+        [Editor(typeof(CustomShortcutKeysEditor), typeof(UITypeEditor))]
+
         public Keys CloseKey
         {
             get => _closeKey;

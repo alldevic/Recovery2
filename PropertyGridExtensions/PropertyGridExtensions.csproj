@@ -44,6 +44,7 @@
         <Compile Include="BlackscreenExpandableConverter.cs" />
         <Compile Include="BooleanToYesNoTypeConverter.cs" />
         <Compile Include="CustomCollectionEditor.cs" />
+        <Compile Include="CustomShortcutKeysEditor.cs" />
         <Compile Include="EnumTypeConverter.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
     </ItemGroup>
