@@ -10,6 +10,7 @@ namespace Recovery2.Extensions
         {
             var validKeys = new[]
             {
+                Keys.None,
                 Keys.A,
                 Keys.B,
                 Keys.C,
