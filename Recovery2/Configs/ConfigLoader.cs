@@ -27,6 +27,12 @@ namespace Recovery2.Configs
             ContestDebug = false,
             HideCursor = true,
             CloseKey = Keys.Escape,
+            FrameSize = new FrameSize
+            {
+                Width = 300,
+                Height = 150,
+                Type = FrameSize.SizeType.Pixel
+            },
             BlackscreenItem = new ContestItem
             {
                 Color = Color.Black,
@@ -126,6 +132,20 @@ namespace Recovery2.Configs
                 SetProp(out var defdelay, nameof(_globalConfig.DefaultDelay), uint.Parse, _defaultConfig.DefaultDelay);
                 _globalConfig.DefaultDelay = defdelay;
 
+                _globalConfig.FrameSize = new FrameSize();
+                if (_config.GetSection("framesize") is FrameSizeConfigSection frameSizeConfigSection)
+                {
+                    _globalConfig.FrameSize.Width = frameSizeConfigSection.FrameSize.Width;
+                    _globalConfig.FrameSize.Height = frameSizeConfigSection.FrameSize.Height;
+                    _globalConfig.FrameSize.Type = frameSizeConfigSection.FrameSize.Type;
+                }
+                else
+                {
+                    _globalConfig.FrameSize.Width = _defaultConfig.FrameSize.Width;
+                    _globalConfig.FrameSize.Height = _defaultConfig.FrameSize.Height;
+                    _globalConfig.FrameSize.Type = _defaultConfig.FrameSize.Type;
+                }
+                
                 SetProp(out var random, nameof(_globalConfig.Random), Convert.ToBoolean, _defaultConfig.Random);
                 _globalConfig.Random = random;
 
@@ -229,6 +249,16 @@ namespace Recovery2.Configs
             SetAppSetting(nameof(_globalConfig.ContestDebug), _globalConfig.ContestDebug);
             _log.Trace($"{nameof(_globalConfig.ContestDebug)}='{_globalConfig.ContestDebug}'");
 
+            if (_config.GetSection("framesize") is FrameSizeConfigSection framesize)
+            {
+                framesize.FrameSize = new FrameSizeElement
+                {
+                    Width = _globalConfig.FrameSize.Width,
+                    Height = _globalConfig.FrameSize.Height,
+                    Type = _globalConfig.FrameSize.Type
+                };
+            }
+            
             if (_config.GetSection("framesSettings") is FramesConfigSection frames)
             {
                 frames.FrameItems.Clear();
