@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using Recovery2.Extensions;
 
 namespace Recovery2.Models
 {
@@ -33,14 +34,15 @@ namespace Recovery2.Models
             set => _type = value;
         }
 
+        [TypeConverter(typeof(EnumTypeConverter))]
         public enum SizeType
         {
-            [Description("Соотношение")]
-            Ratio,
-            [Description("Абсолютное")]
+            [Description("Процент")]
+            Percent,
+            [Description("Пиксель")]
             Pixel
         }
 
-        public override string ToString() => $"{_type}, {_width}, {_height}";
+        public override string ToString() => $"{_type.GetDescription()}, {_width}, {_height}";
     }
 }
