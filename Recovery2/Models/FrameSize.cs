@@ -3,16 +3,18 @@ using Recovery2.Extensions;
 
 namespace Recovery2.Models
 {
-    [TypeConverter(typeof(ExpandableObjectConverter))]
+    
+    [TypeConverter(typeof(PropertySorter))]
     public class FrameSize
     {
-        private int _width;
-        private int _height;
+        private uint _width;
+        private uint _height;
         private SizeType _type;
 
         [DisplayName("Ширина")]
         [Description("Ширина кадра")]
-        public int Width
+        [PropertyOrder(2)]
+        public uint Width
         {
             get => _width;
             set => _width = value;
@@ -20,7 +22,8 @@ namespace Recovery2.Models
 
         [DisplayName("Высота")]
         [Description("Высота кадра")]
-        public int Height
+        [PropertyOrder(3)]
+        public uint Height
         {
             get => _height;
             set => _height = value;
@@ -28,6 +31,7 @@ namespace Recovery2.Models
 
         [DisplayName("Единица измерения")]
         [Description("Единица измерения")]
+        [PropertyOrder(1)]
         public SizeType Type
         {
             get => _type;

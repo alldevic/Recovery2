@@ -6,16 +6,16 @@ namespace Recovery2.Configs
     public class FrameSizeElement : ConfigurationElement
     {
         [ConfigurationProperty("width", DefaultValue = "300", IsKey = false, IsRequired = true)]
-        public int Width
+        public uint Width
         {
-            get => (int) base["width"];
+            get => (uint) base["width"];
             set => base["width"] = value;
         }
         
         [ConfigurationProperty("height", DefaultValue = "150", IsKey = false, IsRequired = true)]
-        public int Height
+        public uint Height
         {
-            get => (int) base["height"];
+            get => (uint) base["height"];
             set => base["height"] = value;
         }
 
