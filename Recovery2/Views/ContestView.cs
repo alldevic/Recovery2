@@ -35,6 +35,44 @@ namespace Recovery2.Views
             ContestLabel.Text = config.Title;
             _closeKey = config.CloseKey;
             ScaleFont(ContestLabel);
+
+            switch (config.FrameSize.Type)
+            {
+                case FrameSize.SizeType.Percent:
+                  
+                    tableLayoutPanel2.ColumnStyles[0].SizeType = SizeType.Percent;
+                    tableLayoutPanel2.ColumnStyles[0].Width = (100 - config.FrameSize.Width) / 2f;
+                    tableLayoutPanel2.ColumnStyles[1].SizeType = SizeType.Percent;
+                    tableLayoutPanel2.ColumnStyles[1].Width = config.FrameSize.Width;
+                    tableLayoutPanel2.ColumnStyles[2].SizeType = SizeType.Percent;
+                    tableLayoutPanel2.ColumnStyles[2].Width = (100 - config.FrameSize.Width) / 2f;
+
+                    tableLayoutPanel2.RowStyles[0].SizeType = SizeType.Percent;
+                    tableLayoutPanel2.RowStyles[0].Height = (100 - config.FrameSize.Height) / 2f;
+                    tableLayoutPanel2.RowStyles[1].SizeType = SizeType.Percent;
+                    tableLayoutPanel2.RowStyles[1].Height = config.FrameSize.Height;
+                    tableLayoutPanel2.RowStyles[2].SizeType = SizeType.Percent;
+                    tableLayoutPanel2.RowStyles[2].Height = (100 - config.FrameSize.Height) / 2f;
+
+                    break;
+                case FrameSize.SizeType.Pixel:
+                    tableLayoutPanel2.ColumnStyles[0].SizeType = SizeType.Percent;
+                    tableLayoutPanel2.ColumnStyles[0].Width = 50;
+                    tableLayoutPanel2.ColumnStyles[1].SizeType = SizeType.Absolute;
+                    tableLayoutPanel2.ColumnStyles[1].Width = config.FrameSize.Width;
+                    tableLayoutPanel2.ColumnStyles[2].SizeType = SizeType.Percent;
+                    tableLayoutPanel2.ColumnStyles[2].Width = 50;
+
+                    tableLayoutPanel2.RowStyles[0].SizeType = SizeType.Percent;
+                    tableLayoutPanel2.RowStyles[0].Height = 50;
+                    tableLayoutPanel2.RowStyles[1].SizeType = SizeType.Absolute;
+                    tableLayoutPanel2.RowStyles[1].Height = config.FrameSize.Height;
+                    tableLayoutPanel2.RowStyles[2].SizeType = SizeType.Percent;
+                    tableLayoutPanel2.RowStyles[2].Height = 50;
+
+                    break;
+            }
+
             if (!config.ContestDebug)
             {
                 TopMost = true;

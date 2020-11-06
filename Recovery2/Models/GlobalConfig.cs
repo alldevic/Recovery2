@@ -18,6 +18,7 @@ namespace Recovery2.Models
         private ObservableCollection<ContestItem> _items;
         private bool _contestDebug;
         private Keys _closeKey;
+        private FrameSize _frameSize;
 
         [Category(@"Основные")]
         [Description(@"Заголовок для окна с тестом")]
@@ -65,6 +66,15 @@ namespace Recovery2.Models
         {
             get => _defaultDelay;
             set => SetProperty(ref _defaultDelay, value);
+        }
+        
+        [Category(@"Алгоритм")]
+        [Description(@"Настройки размера кадра")]
+        [DisplayName(@"Размер кадра")]
+        public FrameSize FrameSize
+        {
+            get => _frameSize;
+            set => SetProperty(ref _frameSize, value);
         }
 
         [Category(@"Алгоритм")]
