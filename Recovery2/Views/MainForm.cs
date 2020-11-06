@@ -19,11 +19,11 @@ namespace Recovery2.Views
         public MainForm()
         {
             InitializeComponent();
-            Text = $@"Восстановление {Application.ProductVersion.Substring(0, Application.ProductVersion.Length - 2)}";
         }
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            Text = $@"Восстановление {Application.ProductVersion.Substring(0, Application.ProductVersion.Length - 2)}";
             _log = LogManager.GetCurrentClassLogger();
             _user = new User();
             _configLoader = new ConfigLoader();

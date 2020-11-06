@@ -6,7 +6,7 @@ namespace Recovery2.Extensions
 {
     class EnumTypeConverter : EnumConverter
     {
-        private Type _enumType;
+        private readonly Type _enumType;
 
         /// <summary>
         /// Initializing instance

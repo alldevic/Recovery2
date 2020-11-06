@@ -36,7 +36,7 @@ namespace Recovery2.Models
             get => _count;
             set => SetProperty(ref _count, value);
         }
-        
+
         [Category(@"Основные")]
         [Description(@"Скрывать курсор в режиме тестирования")]
         [DisplayName(@"Скрывать курсор")]
@@ -50,12 +50,13 @@ namespace Recovery2.Models
         [Category(@"Основные")]
         [Description(@"Кнопка для прерывания тестирования")]
         [DisplayName(@"Кнопка прерывания")]
+        [Editor(typeof(CustomShortcutKeysEditor), typeof(UITypeEditor))]
         public Keys CloseKey
         {
             get => _closeKey;
             set => SetProperty(ref _closeKey, value);
         }
-        
+
 
         [Category(@"Алгоритм")]
         [Description(@"Время показа кадра по-умолчанию")]
@@ -105,7 +106,7 @@ namespace Recovery2.Models
             get => _items;
             set => SetProperty(ref _items, value);
         }
-        
+
         [Category(@"Отладка")]
         [Description(@"Режим отладки для формы алгоритма")]
         [DisplayName(@"Отладка")]
