@@ -63,10 +63,10 @@ namespace Recovery2.Extensions
         }
 
         [DllImport("shell32.dll")]
-        static extern IntPtr ExtractIcon(IntPtr hInst, string file, int nIconIndex);
+        private static extern IntPtr ExtractIcon(IntPtr hInst, string file, int nIconIndex);
 
         [DllImport("user32.dll", SetLastError = true)]
-        static extern bool DestroyIcon(IntPtr hIcon);
+        private static extern bool DestroyIcon(IntPtr hIcon);
 
         public static bool SetIcon(object form, int iIconIndex, string dllOrExe = null)
         {
@@ -78,7 +78,7 @@ namespace Recovery2.Extensions
             if (hIcon == IntPtr.Zero)
                 return false;
 
-            Icon icon = (Icon) Icon.FromHandle(hIcon).Clone();
+            var icon = (Icon) Icon.FromHandle(hIcon).Clone();
             DestroyIcon(hIcon);
 
             form.GetType().GetProperty("Icon")?.SetValue(form, icon);
