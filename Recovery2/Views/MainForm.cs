@@ -23,6 +23,7 @@ namespace Recovery2.Views
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            SetIcon(this, 0);
             Text = $@"Восстановление {Application.ProductVersion.Substring(0, Application.ProductVersion.Length - 2)}";
             _log = LogManager.GetCurrentClassLogger();
             _user = new User();

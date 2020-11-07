@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Drawing;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
 namespace Recovery2.Extensions
@@ -45,7 +47,7 @@ namespace Recovery2.Extensions
                 ? ((DescriptionAttribute) attrs[0]).Description
                 : enumerationValue.ToString();
         }
-        
+
         public static void Shuffle<T>(this IList<T> list)
         {
             var rng = new Random();
@@ -58,6 +60,29 @@ namespace Recovery2.Extensions
                 list[k] = list[n];
                 list[n] = value;
             }
+        }
+
+        [DllImport("shell32.dll")]
+        static extern IntPtr ExtractIcon(IntPtr hInst, string file, int nIconIndex);
+
+        [DllImport("user32.dll", SetLastError = true)]
+        static extern bool DestroyIcon(IntPtr hIcon);
+
+        public static bool SetIcon(object form, int iIconIndex, string dllOrExe = null)
+        {
+            if (dllOrExe == null)
+                dllOrExe = System.Reflection.Assembly.GetExecutingAssembly().Location;
+
+            var hIcon = ExtractIcon(IntPtr.Zero, dllOrExe, iIconIndex);
+
+            if (hIcon == IntPtr.Zero)
+                return false;
+
+            Icon icon = (Icon) Icon.FromHandle(hIcon).Clone();
+            DestroyIcon(hIcon);
+
+            form.GetType().GetProperty("Icon")?.SetValue(form, icon);
+            return true;
         }
     }
 }
