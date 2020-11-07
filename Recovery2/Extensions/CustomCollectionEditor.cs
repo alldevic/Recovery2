@@ -1,10 +1,17 @@
 ﻿using System;
+using System.Collections.ObjectModel;
 using System.ComponentModel.Design;
 using System.Reflection;
 using System.Windows.Forms;
+using Recovery2.Models;
 
 namespace Recovery2.Extensions
 {
+    internal static class Store
+    {
+        public static object Data { get; set; }
+    }
+
     internal class CustomCollectionEditor : CollectionEditor
     {
         public CustomCollectionEditor(Type type)
@@ -36,6 +43,18 @@ namespace Recovery2.Extensions
             propertyGrid.HelpVisible = true;
 
             return form;
+        }
+
+        protected override void CancelChanges()
+        {
+            ((GlobalConfig) Context.Instance).Items = (ObservableCollection<ContestItem>) Store.Data;
+            base.CancelChanges();
+        }
+
+        protected override object[] GetItems(object editValue)
+        {
+            Store.Data = editValue.Copy();
+            return base.GetItems(editValue);
         }
     }
 }
