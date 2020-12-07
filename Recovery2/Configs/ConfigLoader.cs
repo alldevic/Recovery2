@@ -36,7 +36,7 @@ namespace Recovery2.Configs
             BlackscreenItem = new ContestItem
             {
                 Color = Color.Black,
-                Delay = 0,
+                Delay = 1500,
                 Key = 0,
                 Name = @"Blackscreen"
             },
