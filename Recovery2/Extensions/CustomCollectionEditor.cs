@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.Design;
+using System.Drawing;
 using System.Reflection;
 using System.Windows.Forms;
 
@@ -20,7 +21,8 @@ namespace Recovery2.Extensions
             var form = base.CreateCollectionForm();
             form.StartPosition = FormStartPosition.CenterParent;
             form.HelpButton = false;
-
+            form.Font = new Font(form.Font.FontFamily, 12, form.Font.Style, form.Font.Unit, form.Font.GdiCharSet,
+                form.Font.GdiVerticalFont);
             var gridInfo = form.GetType().GetField("propertyBrowser", BindingFlags.NonPublic | BindingFlags.Instance);
             var propertyGrid = (PropertyGrid) gridInfo?.GetValue(form);
 
