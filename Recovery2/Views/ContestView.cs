@@ -152,9 +152,15 @@ namespace Recovery2.Views
             var pos = _result.Results.Count(x => x.Success);
             var all = _result.Results.Count;
             Cursor.Show();
-            MessageBox.Show(
-                $@"{_user.LastName} {_user.FirstName} {_user.SecondName}{Environment.NewLine}Правильно: {pos}{Environment.NewLine}Всего: {all}",
-                @"Тестирование завершено", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            using (new CenteredMessageBox(this,
+                new Font(Font.FontFamily, 12, Font.Style, Font.Unit, Font.GdiCharSet,
+                    Font.GdiVerticalFont)))
+            {
+                MessageBox.Show(
+                    $@"{_user.LastName} {_user.FirstName} {_user.SecondName}{Environment.NewLine}Правильно: {pos}{Environment.NewLine}Всего: {all}",
+                    @"Тестирование завершено", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
             CsvReport.WriteCsv(new[] {_result});
         }
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using NLog;
@@ -45,7 +46,10 @@ namespace Recovery2.Views
             }
         }
 
-        private void ButtonClear_Click(object sender, EventArgs e) => _user.Clear();
+        private void ButtonClear_Click(object sender, EventArgs e)
+        {
+            _user.Clear();
+        }
 
         private void ButtonConfig_Click(object sender, EventArgs e)
         {
@@ -74,7 +78,13 @@ namespace Recovery2.Views
             if (!_user.IsValid())
             {
                 _log.Info(@"Данные пациента заполнены не полностью!");
-                MessageBox.Show(@"Данные пациента заполнены не полностью!");
+                using (new CenteredMessageBox(this,
+                    new Font(Font.FontFamily, 12, Font.Style, Font.Unit, Font.GdiCharSet,
+                        Font.GdiVerticalFont)))
+                {
+                    MessageBox.Show(@"Данные пациента заполнены не полностью!");
+                }
+
                 return;
             }
 
@@ -104,15 +114,32 @@ namespace Recovery2.Views
                 }
             }
 
-            if (config.Count != 0)
-            {
-                new ContestView(_configLoader.GlobalConfig, _user, contestQueue).Show();
-            }
-            else
+            if (config.Count == 0)
             {
                 _log.Warn(@"Количество объектов равно 0!");
-                MessageBox.Show(@"Количество объектов равно 0!");
+                using (new CenteredMessageBox(this,
+                    new Font(Font.FontFamily, 12, Font.Style, Font.Unit, Font.GdiCharSet,
+                        Font.GdiVerticalFont)))
+                {
+                    MessageBox.Show(@"Количество объектов равно 0!");
+                }
             }
+
+            using (new CenteredMessageBox(this,
+                new Font(Font.FontFamily, 12, Font.Style, Font.Unit, Font.GdiCharSet,
+                    Font.GdiVerticalFont)))
+            {
+                MessageBox.Show(@"Как только на экране возникнет изображение, Вам необходимо как можно быстрее выполнять следующую задачу:
+
+1. Необходимо реагировать правой рукой нажатием клавиши ENTER в случае предъявления красного прямоугольника
+и клавиши ПРОБЕЛ левой рукой при предъявлении зеленого прямоугольника. На прямоугольник желтого цвета реагировать не нужно.
+
+2. Одновременно с выполнением первого задания придумывать как можно больше способов нестандартного
+использования предмета, указанного в заголовке экрана.
+", @"Инструкция");
+            }
+            
+            new ContestView(_configLoader.GlobalConfig, _user, contestQueue).Show();
         }
 
         private ContestItem GetNext(ContestItem curr, GlobalConfig config)

@@ -60,6 +60,7 @@
         <Compile Include="Configs\FrameSizeConfigSection.cs" />
         <Compile Include="Configs\FrameSizeElement.cs" />
         <Compile Include="CsvReport.cs" />
+        <Compile Include="CenteredMessageBox.cs" />
         <Compile Include="Extensions\BlackscreenExpandableConverter.cs" />
         <Compile Include="Extensions\BooleanToYesNoTypeConverter.cs" />
         <Compile Include="Extensions\CustomCollectionEditor.cs" />
