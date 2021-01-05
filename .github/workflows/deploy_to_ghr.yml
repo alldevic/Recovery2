@@ -55,7 +55,7 @@ jobs:
 
       - name: Download a build zip
         id: download_zip
-        uses: actions/download-artifact@v2.0.7
+        uses: actions/download-artifact@v2.0.8
         with:
           name: build-zip
 
