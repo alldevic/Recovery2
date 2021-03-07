@@ -19,7 +19,7 @@ namespace Recovery2.Configs
 
         private readonly GlobalConfig _defaultConfig = new GlobalConfig
         {
-            Title = @"Как нестандартно можно использовать карандаш?",
+            Title = @"Как необычно использовать кирпич?",
             Count = 30,
             Random = true,
             DefaultDelay = 1000,
