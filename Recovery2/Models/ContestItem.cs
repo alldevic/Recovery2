@@ -12,6 +12,7 @@ namespace Recovery2.Models
         private uint _delay;
         private Keys _key;
         private string _name;
+        private ContentItemType _type;
 
         [Description("Внутреннее имя")]
         [DisplayName("Внутреннее имя")]
@@ -38,7 +39,7 @@ namespace Recovery2.Models
         }
 
         [Description(
-            "Клавиша, которую необходимо нажать для успешного прохождния. None - успешное прохождение без нажатия")]
+            "Клавиша, которую необходимо нажать для успешного прохождения. None - успешное прохождение без нажатия")]
         [DisplayName("Клавиша")]
         [Editor(typeof(CustomShortcutKeysEditor), typeof(UITypeEditor))]
         public Keys Key
@@ -46,7 +47,16 @@ namespace Recovery2.Models
             get => _key;
             set => SetProperty(ref _key, value);
         }
-
+        
+        [DisplayName("Тип кадра")]
+        [Description("Выберите тип содержимого для кадра: сплошной цвет, текст, изображение")]
+        [TypeConverter(typeof(EnumTypeConverter))]
+        public ContentItemType Type
+        {
+            get => _type;
+            set => SetProperty(ref _type, value);
+        }
+        
         public override string ToString() => $"{_name}, {_color}, {_delay}, {_key}";
     }
 }

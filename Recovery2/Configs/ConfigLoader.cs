@@ -38,7 +38,8 @@ namespace Recovery2.Configs
                 Color = Color.Black,
                 Delay = 1500,
                 Key = 0,
-                Name = @"Blackscreen"
+                Name = @"Blackscreen",
+                Type = ContentItemType.Color
             },
             Items = new ObservableCollection<ContestItem>(new[]
             {
@@ -48,6 +49,7 @@ namespace Recovery2.Configs
                     Color = Color.Red,
                     Delay = 0,
                     Key = Keys.Space,
+                    Type = ContentItemType.Color
                 },
                 new ContestItem()
                 {
@@ -55,6 +57,7 @@ namespace Recovery2.Configs
                     Color = Color.Yellow,
                     Delay = 0,
                     Key = Keys.None,
+                    Type = ContentItemType.Color
                 },
                 new ContestItem()
                 {
@@ -62,6 +65,7 @@ namespace Recovery2.Configs
                     Color = Color.Green,
                     Delay = 0,
                     Key = Keys.Enter,
+                    Type = ContentItemType.Color
                 },
             })
         };
@@ -171,7 +175,8 @@ namespace Recovery2.Configs
                             Name = frameItem.Name,
                             Color = frameItem.Color,
                             Delay = frameItem.Delay,
-                            Key = frameItem.Key
+                            Key = frameItem.Key,
+                            Type = frameItem.Type
                         };
 
                         _log.Trace(
@@ -179,7 +184,9 @@ namespace Recovery2.Configs
                         _log.Trace(
                             $"BlackscreenItem.{nameof(frameItem.Delay)}='{_globalConfig.BlackscreenItem.Delay}'");
                         _log.Trace(
-                            $"BlackscreenItem.{nameof(frameItem.Key)}='{_globalConfig.BlackscreenItem.Key}'");
+                            $"BlackscreenItem.{nameof(frameItem.Key)}='{_globalConfig.BlackscreenItem.Key}'"); 
+                        _log.Trace(
+                            $"BlackscreenItem.{nameof(frameItem.Type)}='{_globalConfig.BlackscreenItem.Type}'");
 
                         continue;
                     }
@@ -189,7 +196,8 @@ namespace Recovery2.Configs
                         Name = frameItem.Name,
                         Color = frameItem.Color,
                         Delay = frameItem.Delay,
-                        Key = frameItem.Key
+                        Key = frameItem.Key,
+                        Type = frameItem.Type
                     };
                     _globalConfig.Items.Add(tmpItem);
 
@@ -197,6 +205,7 @@ namespace Recovery2.Configs
                     _log.Trace($"Items.{last.Name}.{nameof(last.Color)}='{last.Color}'");
                     _log.Trace($"Items.{last.Name}.{nameof(last.Delay)}='{last.Delay}'");
                     _log.Trace($"Items.{last.Name}.{nameof(last.Key)}='{last.Key}'");
+                    _log.Trace($"Items.{last.Name}.{nameof(last.Type)}='{last.Type}'");
                 }
 
                 if (_loadBroken)
@@ -267,7 +276,8 @@ namespace Recovery2.Configs
                     Name = _globalConfig.BlackscreenItem.Name,
                     Color = _globalConfig.BlackscreenItem.Color,
                     Delay = _globalConfig.BlackscreenItem.Delay,
-                    Key = _globalConfig.BlackscreenItem.Key
+                    Key = _globalConfig.BlackscreenItem.Key,
+                    Type = _globalConfig.BlackscreenItem.Type
                 });
                 foreach (var item in _globalConfig.Items)
                 {
@@ -276,7 +286,8 @@ namespace Recovery2.Configs
                         Name = item.Name,
                         Color = item.Color,
                         Delay = item.Delay,
-                        Key = item.Key
+                        Key = item.Key,
+                        Type = item.Type
                     });
                 }
             }

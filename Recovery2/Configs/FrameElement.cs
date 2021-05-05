@@ -2,6 +2,7 @@
 using System.Configuration;
 using System.Drawing;
 using System.Windows.Forms;
+using Recovery2.Models;
 
 namespace Recovery2.Configs
 {
@@ -36,5 +37,14 @@ namespace Recovery2.Configs
             get => (Keys) base["key"];
             set => base["key"] = value;
         }
+        
+        [ConfigurationProperty("type", DefaultValue = ContentItemType.Color, IsKey = false, IsRequired = true)]
+        public ContentItemType Type
+        {
+            get => (ContentItemType) base["type"];
+            set => base["type"] = value;
+        }
+        
+        
     }
 }
