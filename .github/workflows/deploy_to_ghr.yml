@@ -36,7 +36,7 @@ jobs:
           Configuration: Release
       
       - name: Upload output file
-        uses: actions/upload-artifact@v2.2.2
+        uses: actions/upload-artifact@v2.2.3
         with:
           name: build-zip
           path: ./${{ env.Solution_Name }}_${{ steps.get_version.outputs.VERSION }}.0.zip
@@ -49,13 +49,13 @@ jobs:
 
       - name: Conventional Changelog Action
         id: changelog
-        uses: metcalfc/changelog-generator@v0.4.4
+        uses: metcalfc/changelog-generator@v1.0.0
         with:
           myToken: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Download a build zip
         id: download_zip
-        uses: actions/download-artifact@v2.0.8
+        uses: actions/download-artifact@v2.0.9
         with:
           name: build-zip
 
