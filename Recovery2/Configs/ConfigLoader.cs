@@ -49,7 +49,8 @@ namespace Recovery2.Configs
                     Color = Color.Red,
                     Delay = 0,
                     Key = Keys.Space,
-                    Type = ContentItemType.Color
+                    Type = ContentItemType.Color,
+                    ImagePath = string.Empty
                 },
                 new ContestItem()
                 {
@@ -57,7 +58,8 @@ namespace Recovery2.Configs
                     Color = Color.Yellow,
                     Delay = 0,
                     Key = Keys.None,
-                    Type = ContentItemType.Color
+                    Type = ContentItemType.Color,
+                    ImagePath = string.Empty
                 },
                 new ContestItem()
                 {
@@ -149,7 +151,7 @@ namespace Recovery2.Configs
                     _globalConfig.FrameSize.Width = _defaultConfig.FrameSize.Width;
                     _globalConfig.FrameSize.Height = _defaultConfig.FrameSize.Height;
                 }
-                
+
                 SetProp(out var random, nameof(_globalConfig.Random), Convert.ToBoolean, _defaultConfig.Random);
                 _globalConfig.Random = random;
 
@@ -176,7 +178,8 @@ namespace Recovery2.Configs
                             Color = frameItem.Color,
                             Delay = frameItem.Delay,
                             Key = frameItem.Key,
-                            Type = frameItem.Type
+                            Type = frameItem.Type,
+                            ImagePath = frameItem.ImagePath
                         };
 
                         _log.Trace(
@@ -184,9 +187,11 @@ namespace Recovery2.Configs
                         _log.Trace(
                             $"BlackscreenItem.{nameof(frameItem.Delay)}='{_globalConfig.BlackscreenItem.Delay}'");
                         _log.Trace(
-                            $"BlackscreenItem.{nameof(frameItem.Key)}='{_globalConfig.BlackscreenItem.Key}'"); 
+                            $"BlackscreenItem.{nameof(frameItem.Key)}='{_globalConfig.BlackscreenItem.Key}'");
                         _log.Trace(
                             $"BlackscreenItem.{nameof(frameItem.Type)}='{_globalConfig.BlackscreenItem.Type}'");
+                        _log.Trace(
+                            $"BlackscreenItem.{nameof(frameItem.ImagePath)}='{_globalConfig.BlackscreenItem.ImagePath}'");
 
                         continue;
                     }
@@ -197,7 +202,8 @@ namespace Recovery2.Configs
                         Color = frameItem.Color,
                         Delay = frameItem.Delay,
                         Key = frameItem.Key,
-                        Type = frameItem.Type
+                        Type = frameItem.Type,
+                        ImagePath = frameItem.ImagePath
                     };
                     _globalConfig.Items.Add(tmpItem);
 
@@ -206,6 +212,7 @@ namespace Recovery2.Configs
                     _log.Trace($"Items.{last.Name}.{nameof(last.Delay)}='{last.Delay}'");
                     _log.Trace($"Items.{last.Name}.{nameof(last.Key)}='{last.Key}'");
                     _log.Trace($"Items.{last.Name}.{nameof(last.Type)}='{last.Type}'");
+                    _log.Trace($"Items.{last.Name}.{nameof(last.ImagePath)}='{last.ImagePath}'");
                 }
 
                 if (_loadBroken)
@@ -267,7 +274,7 @@ namespace Recovery2.Configs
                     Height = _globalConfig.FrameSize.Height
                 };
             }
-            
+
             if (_config.GetSection("framesSettings") is FramesConfigSection frames)
             {
                 frames.FrameItems.Clear();
@@ -277,7 +284,8 @@ namespace Recovery2.Configs
                     Color = _globalConfig.BlackscreenItem.Color,
                     Delay = _globalConfig.BlackscreenItem.Delay,
                     Key = _globalConfig.BlackscreenItem.Key,
-                    Type = _globalConfig.BlackscreenItem.Type
+                    Type = _globalConfig.BlackscreenItem.Type,
+                    ImagePath = _globalConfig.BlackscreenItem.ImagePath
                 });
                 foreach (var item in _globalConfig.Items)
                 {
@@ -287,7 +295,8 @@ namespace Recovery2.Configs
                         Color = item.Color,
                         Delay = item.Delay,
                         Key = item.Key,
-                        Type = item.Type
+                        Type = item.Type,
+                        ImagePath = item.ImagePath
                     });
                 }
             }

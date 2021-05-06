@@ -44,7 +44,12 @@ namespace Recovery2.Configs
             get => (ContentItemType) base["type"];
             set => base["type"] = value;
         }
-        
-        
+
+        [ConfigurationProperty("imagePath", DefaultValue = "", IsKey = false, IsRequired = true)]
+        public string ImagePath
+        {
+            get => (string) base["imagePath"];
+            set => base["imagePath"] = value;
+        }
     }
 }

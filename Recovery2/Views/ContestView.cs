@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using Recovery2.Models;
@@ -39,7 +40,7 @@ namespace Recovery2.Views
             switch (config.FrameSize.Type)
             {
                 case FrameSize.SizeType.Percent:
-                  
+
                     tableLayoutPanel2.ColumnStyles[0].SizeType = SizeType.Percent;
                     tableLayoutPanel2.ColumnStyles[0].Width = (100 - config.FrameSize.Width) / 2f;
                     tableLayoutPanel2.ColumnStyles[1].SizeType = SizeType.Percent;
@@ -121,7 +122,17 @@ namespace Recovery2.Views
             }
 
             _curr = _queue.Dequeue();
-            ContestImage.BackColor = _curr.Color;
+            
+            if (_curr.Type == ContentItemType.Image && File.Exists(_curr.ImagePath))
+            {
+                ContestImage.Image = Image.FromFile(_curr.ImagePath);
+                ContestImage.BackColor = BackColor;
+            }
+            else
+            {
+                ContestImage.Image = new Bitmap(1,1);
+                ContestImage.BackColor = _curr.Color;
+            }
             _timer.Interval = (int) _curr.Delay;
             _swt.Reset();
             _timer.Enabled = true;
@@ -140,7 +151,18 @@ namespace Recovery2.Views
             }
 
             _curr = _queue.Dequeue();
-            ContestImage.BackColor = _curr.Color;
+            if (_curr.Type == ContentItemType.Image && File.Exists(_curr.ImagePath))
+            {
+                ContestImage.Image = Image.FromFile(_curr.ImagePath);
+                ContestImage.BackColor = BackColor;
+            }
+            else
+            {
+                ContestImage.Image = new Bitmap(1,1);
+                ContestImage.BackColor = _curr.Color;
+            }
+            
+
             _timer.Interval = (int) _curr.Delay;
             _timer.Start();
             _swt.Reset();

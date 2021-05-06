@@ -99,7 +99,9 @@ namespace Recovery2.Views
                     Color = tmpItem.Color,
                     Delay = tmpItem.Delay == 0 ? config.DefaultDelay : tmpItem.Delay,
                     Key = tmpItem.Key,
-                    Name = $"Item{i}"
+                    Name = $"Item{i}",
+                    Type = tmpItem.Type,
+                    ImagePath = tmpItem.ImagePath
                 });
 
                 if (config.Blackscreen)
@@ -109,7 +111,9 @@ namespace Recovery2.Views
                         Color = config.BlackscreenItem.Color,
                         Delay = config.BlackscreenItem.Delay == 0 ? config.DefaultDelay : config.BlackscreenItem.Delay,
                         Key = config.BlackscreenItem.Key,
-                        Name = $"Blackscreen{i}"
+                        Name = $"Blackscreen{i}",
+                        Type = config.BlackscreenItem.Type,
+                        ImagePath = config.BlackscreenItem.ImagePath
                     });
                 }
             }

@@ -72,6 +72,7 @@
         <Compile Include="Extensions\CustomCollectionEditor.cs" />
         <Compile Include="Extensions\CustomShortcutKeysEditor.cs" />
         <Compile Include="Extensions\EnumTypeConverter.cs" />
+        <Compile Include="Extensions\ImageFileEditor.cs" />
         <Compile Include="Extensions\ObjectExtensions.cs" />
         <Compile Include="Extensions\PropertySorter.cs" />
         <Compile Include="Extensions\Utils.cs" />

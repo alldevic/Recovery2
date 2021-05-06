@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Design;
+using System.IO;
 using System.Windows.Forms;
 using Recovery2.Extensions;
 
@@ -13,6 +14,7 @@ namespace Recovery2.Models
         private Keys _key;
         private string _name;
         private ContentItemType _type;
+        private string _imagePath;
 
         [Description("Внутреннее имя")]
         [DisplayName("Внутреннее имя")]
@@ -56,7 +58,17 @@ namespace Recovery2.Models
             get => _type;
             set => SetProperty(ref _type, value);
         }
-        
+
+
+        [DisplayName("Путь до файла")]
+        [Description("Путь до изображения для кадра (если выббран тип \"изображение\"")]
+        [Editor(typeof(ImageFileEditor), typeof(UITypeEditor))]
+        public string ImagePath
+        {
+            get => _imagePath;
+            set => SetProperty(ref _imagePath, value);
+        }
+
         public override string ToString() => $"{_name}, {_color}, {_delay}, {_key}";
     }
 }
