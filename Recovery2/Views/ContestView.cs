@@ -122,17 +122,35 @@ namespace Recovery2.Views
             }
 
             _curr = _queue.Dequeue();
-            
+
             if (_curr.Type == ContentItemType.Image && File.Exists(_curr.ImagePath))
             {
                 ContestImage.Image = Image.FromFile(_curr.ImagePath);
                 ContestImage.BackColor = BackColor;
             }
+            else if (_curr.Type == ContentItemType.Text)
+            {
+                ContestImage.BackColor = _curr.Color;
+                ContestImage.Image = new Bitmap(ContestImage.Width, ContestImage.Height);
+                var g = Graphics.FromImage(ContestImage.Image);
+                
+                var text = "+";
+                var contestFont = new Font(Font.FontFamily, 96, Font.Style, Font.Unit, Font.GdiCharSet);
+                
+                var textSize = g.MeasureString(text, Font);
+                var locationToDraw = new PointF {X = 0, Y = 0};
+
+                locationToDraw.X = (ContestImage.Width / 2) - 5*textSize.Width;
+
+                g.DrawString(text, contestFont, Brushes.White, locationToDraw);
+                g.Dispose();
+            }
             else
             {
-                ContestImage.Image = new Bitmap(1,1);
+                ContestImage.Image = new Bitmap(1, 1);
                 ContestImage.BackColor = _curr.Color;
             }
+
             _timer.Interval = (int) _curr.Delay;
             _swt.Reset();
             _timer.Enabled = true;
@@ -161,16 +179,22 @@ namespace Recovery2.Views
                 ContestImage.BackColor = _curr.Color;
                 ContestImage.Image = new Bitmap(ContestImage.Width, ContestImage.Height);
                 var g = Graphics.FromImage(ContestImage.Image);
-                g.DrawString("+", new Font("Arial", 24), new SolidBrush(Color.White), new Point(ContestImage.Width / 2 - 12, 
-                                                                                                ContestImage.Height / 2 - 12));
-                // g.Dispose();
+
+                var text = "+";
+                var textSize = g.MeasureString(text, Font);
+                var locationToDraw = new PointF {X = 0, Y = 0};
+                
+                locationToDraw.X = (ContestImage.Width / 2) - 5*textSize.Width;
+
+                g.DrawString(text, Font, Brushes.White, locationToDraw);
+                g.Dispose();
             }
             else
             {
-                ContestImage.Image = new Bitmap(1,1);
+                ContestImage.Image = new Bitmap(1, 1);
                 ContestImage.BackColor = _curr.Color;
             }
-            
+
 
             _timer.Interval = (int) _curr.Delay;
             _timer.Start();
