@@ -160,10 +160,10 @@ namespace Recovery2.Views
             {
                 ContestImage.BackColor = _curr.Color;
                 ContestImage.Image = new Bitmap(ContestImage.Width, ContestImage.Height);
-                var g = Graphics.FromImage(pictureBox1.Image);
+                var g = Graphics.FromImage(ContestImage.Image);
                 g.DrawString("+", new Font("Arial", 24), new SolidBrush(Color.White), new Point(ContestImage.Width / 2 - 12, 
                                                                                                 ContestImage.Height / 2 - 12));
-                g.Dispose();
+                // g.Dispose();
             }
             else
             {
