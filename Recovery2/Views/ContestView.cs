@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
@@ -155,6 +155,15 @@ namespace Recovery2.Views
             {
                 ContestImage.Image = Image.FromFile(_curr.ImagePath);
                 ContestImage.BackColor = BackColor;
+            }
+            else if (_curr.Type == ContentItemType.Text)
+            {
+                ContestImage.BackColor = _curr.Color;
+                ContestImage.Image = new Bitmap(ContestImage.Width, ContestImage.Height);
+                var g = Graphics.FromImage(pictureBox1.Image);
+                g.DrawString("+", new Font("Arial", 24), new SolidBrush(Color.White), new Point(ContestImage.Width / 2 - 12, 
+                                                                                                ContestImage.Height / 2 - 12));
+                g.Dispose();
             }
             else
             {
