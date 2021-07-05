@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.ObjectModel;
 using System.Configuration;
 using System.Drawing;
@@ -39,7 +39,8 @@ namespace Recovery2.Configs
                 Delay = 1500,
                 Key = 0,
                 Name = @"Blackscreen",
-                Type = ContentItemType.Color
+                Type = ContentItemType.Text,
+                ImagePath = string.Empty
             },
             Items = new ObservableCollection<ContestItem>(new[]
             {
@@ -67,7 +68,8 @@ namespace Recovery2.Configs
                     Color = Color.Green,
                     Delay = 0,
                     Key = Keys.Enter,
-                    Type = ContentItemType.Color
+                    Type = ContentItemType.Color,
+                    ImagePath = string.Empty
                 },
             })
         };

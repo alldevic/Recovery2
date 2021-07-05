@@ -1,4 +1,4 @@
-﻿using System.ComponentModel;
+using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Design;
 using System.Windows.Forms;
@@ -60,7 +60,7 @@ namespace Recovery2.Models
 
 
         [DisplayName("Путь до файла")]
-        [Description("Путь до изображения для кадра (если выббран тип \"изображение\"")]
+        [Description("Путь до изображения для кадра (если выбран тип \"Изображение\"")]
         [Editor(typeof(ImageFileEditor), typeof(UITypeEditor))]
         public string ImagePath
         {
