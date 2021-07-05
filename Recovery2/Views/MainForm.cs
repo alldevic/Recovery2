@@ -129,21 +129,47 @@ namespace Recovery2.Views
                 }
             }
 
-            using (new CenteredMessageBox(this,
-                new Font(Font.FontFamily, 12, Font.Style, Font.Unit, Font.GdiCharSet,
-                    Font.GdiVerticalFont)))
+//             using (new CenteredMessageBox(this,
+//                 new Font(Font.FontFamily, 12, Font.Style, Font.Unit, Font.GdiCharSet,
+//                     Font.GdiVerticalFont)))
+//             {
+//                 MessageBox.Show(@"Как только на экране возникнет изображение, Вам необходимо как можно быстрее выполнять следующую задачу:
+//
+// 1. Необходимо реагировать правой рукой нажатием клавиши ENTER в случае предъявления красного прямоугольника
+// и клавиши ПРОБЕЛ левой рукой при предъявлении зеленого прямоугольника. На прямоугольник желтого цвета реагировать не нужно.
+//
+// 2. Одновременно с выполнением первого задания придумывать как можно больше способов нестандартного
+// использования предмета, указанного в заголовке экрана.
+// ", @"Инструкция");
+//             }
+
+            using( var dialog = new HelpingView() )
             {
-                MessageBox.Show(@"Как только на экране возникнет изображение, Вам необходимо как можно быстрее выполнять следующую задачу:
+                var result = dialog.ShowDialog();
 
-1. Необходимо реагировать правой рукой нажатием клавиши ENTER в случае предъявления красного прямоугольника
-и клавиши ПРОБЕЛ левой рукой при предъявлении зеленого прямоугольника. На прямоугольник желтого цвета реагировать не нужно.
+                switch (result)
+                {
+                    case DialogResult.OK: 
+                    case DialogResult.Yes:
+                        new ContestView(_configLoader.GlobalConfig, _user, contestQueue).Show();
+                        break;
+                    case DialogResult.None:
+                        break;
+                    case DialogResult.Cancel:
+                        break;
+                    case DialogResult.Abort:
+                        break;
+                    case DialogResult.Retry:
+                        break;
+                    case DialogResult.Ignore:
+                        break;
+                    case DialogResult.No:
+                        break;
+                    default:
+                        return;
+                }
 
-2. Одновременно с выполнением первого задания придумывать как можно больше способов нестандартного
-использования предмета, указанного в заголовке экрана.
-", @"Инструкция");
             }
-            
-            new ContestView(_configLoader.GlobalConfig, _user, contestQueue).Show();
         }
 
         private ContestItem GetNext(ContestItem curr, GlobalConfig config)
