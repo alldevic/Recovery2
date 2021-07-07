@@ -133,14 +133,17 @@ namespace Recovery2.Views
                 ContestImage.BackColor = _curr.Color;
                 ContestImage.Image = new Bitmap(ContestImage.Width, ContestImage.Height);
                 var g = Graphics.FromImage(ContestImage.Image);
-                
-                var text = "+";
-                var contestFont = new Font(Font.FontFamily, 96, Font.Style, Font.Unit, Font.GdiCharSet);
-                
-                var textSize = g.MeasureString(text, Font);
-                var locationToDraw = new PointF {X = 0, Y = 0};
 
-                locationToDraw.X = (ContestImage.Width / 2) - 5*textSize.Width;
+                var text = "+";
+                var contestFont = new Font("Symbol", 96);
+
+                var textSize = g.MeasureString(text, contestFont);
+                var locationToDraw = new PointF
+                {
+                    X = (ContestImage.Width / 2) - (textSize.Width / 2),
+                    Y = (ContestImage.Height / 2) - (textSize.Height / 2)
+                };
+
 
                 g.DrawString(text, contestFont, Brushes.White, locationToDraw);
                 g.Dispose();
@@ -181,12 +184,17 @@ namespace Recovery2.Views
                 var g = Graphics.FromImage(ContestImage.Image);
 
                 var text = "+";
-                var textSize = g.MeasureString(text, Font);
-                var locationToDraw = new PointF {X = 0, Y = 0};
-                
-                locationToDraw.X = (ContestImage.Width / 2) - 5*textSize.Width;
+                var contestFont = new Font("Symbol", 96);
 
-                g.DrawString(text, Font, Brushes.White, locationToDraw);
+                var textSize = g.MeasureString(text, contestFont);
+                var locationToDraw = new PointF
+                {
+                    X = (ContestImage.Width / 2) - (textSize.Width / 2),
+                    Y = (ContestImage.Height / 2) - (textSize.Height / 2)
+                };
+
+
+                g.DrawString(text, contestFont, Brushes.White, locationToDraw);
                 g.Dispose();
             }
             else

@@ -49,7 +49,7 @@ namespace Recovery2.Configs
                     Name = @"Красный",
                     Color = Color.Red,
                     Delay = 0,
-                    Key = Keys.Space,
+                    Key = Keys.Enter,
                     Type = ContentItemType.Color,
                     ImagePath = string.Empty
                 },
@@ -67,7 +67,7 @@ namespace Recovery2.Configs
                     Name = @"Зеленый",
                     Color = Color.Green,
                     Delay = 0,
-                    Key = Keys.Enter,
+                    Key = Keys.Space,
                     Type = ContentItemType.Color,
                     ImagePath = string.Empty
                 },
