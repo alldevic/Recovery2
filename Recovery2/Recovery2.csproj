@@ -127,6 +127,9 @@
         <EmbeddedResource Include="Views\ContestView.resx">
             <DependentUpon>ContestView.cs</DependentUpon>
         </EmbeddedResource>
+        <EmbeddedResource Include="Views\HelpingView.resx">
+          <DependentUpon>HelpingView.cs</DependentUpon>
+        </EmbeddedResource>
         <EmbeddedResource Include="Views\MainForm.resx">
             <DependentUpon>MainForm.cs</DependentUpon>
         </EmbeddedResource>
