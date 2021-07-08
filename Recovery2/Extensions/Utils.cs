@@ -84,5 +84,26 @@ namespace Recovery2.Extensions
             form.GetType().GetProperty("Icon")?.SetValue(form, icon);
             return true;
         }
+
+
+        public static void ScaleFont(Control control, float maxSize = 0, float shift = 0, float minSize = 13)
+        {
+            SizeF extent = TextRenderer.MeasureText(control.Text, control.Font);
+
+            var hRatio = control.Height / extent.Height;
+            var wRatio = control.Width / extent.Width;
+            var ratio = (hRatio < wRatio) ? hRatio : wRatio;
+
+            var newSize = control.Font.Size * ratio - 1;
+
+            if (maxSize != 0)
+            {
+                newSize = Math.Min(maxSize, newSize);
+            }
+
+            newSize = (newSize - shift >= minSize) ? newSize + shift : minSize;
+
+            control.Font = new Font(control.Font.FontFamily, newSize, control.Font.Style);
+        }
     }
 }

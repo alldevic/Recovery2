@@ -40,7 +40,7 @@ namespace Recovery2.Views
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.richLabel1 = new RichLabel();
+            this.richLabel1 = new Recovery2.RichLabel();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize) (this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize) (this.pictureBox2)).BeginInit();
@@ -72,17 +72,17 @@ namespace Recovery2.Views
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 11;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 120F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 10F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 90F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.5F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.5F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 2F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.5F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.5F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(784, 561);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
@@ -91,10 +91,10 @@ namespace Recovery2.Views
             this.tableLayoutPanel1.SetColumnSpan(this.label1, 5);
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
-            this.label1.Location = new System.Drawing.Point(58, 50);
+            this.label1.Location = new System.Drawing.Point(58, 64);
             this.label1.Margin = new System.Windows.Forms.Padding(0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(666, 30);
+            this.label1.Size = new System.Drawing.Size(666, 28);
             this.label1.TabIndex = 0;
             this.label1.Text = "При появлении на экране:";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -103,10 +103,10 @@ namespace Recovery2.Views
             // 
             this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
-            this.label2.Location = new System.Drawing.Point(58, 250);
+            this.label2.Location = new System.Drawing.Point(58, 251);
             this.label2.Margin = new System.Windows.Forms.Padding(0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(196, 60);
+            this.label2.Size = new System.Drawing.Size(196, 56);
             this.label2.TabIndex = 1;
             this.label2.Text = "Нажимаем ПРОБЕЛ левой рукой";
             this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -115,10 +115,10 @@ namespace Recovery2.Views
             // 
             this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
-            this.label3.Location = new System.Drawing.Point(293, 250);
+            this.label3.Location = new System.Drawing.Point(293, 251);
             this.label3.Margin = new System.Windows.Forms.Padding(0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(196, 60);
+            this.label3.Size = new System.Drawing.Size(196, 56);
             this.label3.TabIndex = 2;
             this.label3.Text = "Пропускаем";
             this.label3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -127,10 +127,10 @@ namespace Recovery2.Views
             // 
             this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
-            this.label4.Location = new System.Drawing.Point(528, 250);
+            this.label4.Location = new System.Drawing.Point(528, 251);
             this.label4.Margin = new System.Windows.Forms.Padding(0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(196, 60);
+            this.label4.Size = new System.Drawing.Size(196, 56);
             this.label4.TabIndex = 3;
             this.label4.Text = "Нажимаем ENTER правой рукой";
             this.label4.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -139,10 +139,10 @@ namespace Recovery2.Views
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Green;
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Location = new System.Drawing.Point(58, 120);
+            this.pictureBox1.Location = new System.Drawing.Point(58, 128);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(196, 120);
+            this.pictureBox1.Size = new System.Drawing.Size(196, 112);
             this.pictureBox1.TabIndex = 4;
             this.pictureBox1.TabStop = false;
             // 
@@ -150,9 +150,9 @@ namespace Recovery2.Views
             // 
             this.pictureBox2.BackColor = System.Drawing.Color.Yellow;
             this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox2.Location = new System.Drawing.Point(296, 123);
+            this.pictureBox2.Location = new System.Drawing.Point(296, 131);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(190, 114);
+            this.pictureBox2.Size = new System.Drawing.Size(190, 106);
             this.pictureBox2.TabIndex = 5;
             this.pictureBox2.TabStop = false;
             // 
@@ -160,9 +160,9 @@ namespace Recovery2.Views
             // 
             this.pictureBox3.BackColor = System.Drawing.Color.Red;
             this.pictureBox3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox3.Location = new System.Drawing.Point(531, 123);
+            this.pictureBox3.Location = new System.Drawing.Point(531, 131);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(190, 114);
+            this.pictureBox3.Size = new System.Drawing.Size(190, 106);
             this.pictureBox3.TabIndex = 6;
             this.pictureBox3.TabStop = false;
             // 
@@ -171,12 +171,12 @@ namespace Recovery2.Views
             this.button1.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
-            this.button1.Location = new System.Drawing.Point(528, 480);
+            this.button1.Location = new System.Drawing.Point(528, 466);
             this.button1.Margin = new System.Windows.Forms.Padding(0);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(196, 30);
+            this.button1.Size = new System.Drawing.Size(196, 28);
             this.button1.TabIndex = 8;
-            this.button1.Text = "OK";
+            this.button1.Text = "Начать тестирование";
             this.button1.UseVisualStyleBackColor = true;
             // 
             // richLabel1
@@ -184,10 +184,10 @@ namespace Recovery2.Views
             this.richLabel1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tableLayoutPanel1.SetColumnSpan(this.richLabel1, 5);
             this.richLabel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.richLabel1.Location = new System.Drawing.Point(61, 363);
+            this.richLabel1.Location = new System.Drawing.Point(61, 357);
             this.richLabel1.Name = "richLabel1";
             this.richLabel1.ReadOnly = true;
-            this.richLabel1.Size = new System.Drawing.Size(660, 84);
+            this.richLabel1.Size = new System.Drawing.Size(660, 78);
             this.richLabel1.TabIndex = 9;
             this.richLabel1.TabStop = false;
             this.richLabel1.Text = "Одновременно с выполнением этого задания нужно придумать и назвать как можно боль" + "ше способов необычного использования предмета, указанного в заголовке экрана";
@@ -205,6 +205,7 @@ namespace Recovery2.Views
             this.ShowInTaskbar = false;
             this.Text = "Инструкция";
             this.TopMost = true;
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.HelpingView_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize) (this.pictureBox1)).EndInit();
@@ -213,7 +214,7 @@ namespace Recovery2.Views
             this.ResumeLayout(false);
         }
 
-        private RichLabel richLabel1;
+        private Recovery2.RichLabel richLabel1;
 
         private System.Windows.Forms.Button button1;
 

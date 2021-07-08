@@ -5,6 +5,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+using Recovery2.Extensions;
 using Recovery2.Models;
 
 namespace Recovery2.Views
@@ -35,7 +36,7 @@ namespace Recovery2.Views
             InitializeComponent();
             ContestLabel.Text = config.Title;
             _closeKey = config.CloseKey;
-            ScaleFont(ContestLabel);
+            Utils.ScaleFont(ContestLabel);
 
             switch (config.FrameSize.Type)
             {
@@ -234,21 +235,9 @@ namespace Recovery2.Views
             set => base.BackColor = value;
         }
 
-        private void ContestView_SizeChanged(object sender, EventArgs e) => ScaleFont(ContestLabel);
+        private void ContestView_SizeChanged(object sender, EventArgs e) => Utils.ScaleFont(ContestLabel);
 
-        private void ScaleFont(Label lab)
-        {
-            SizeF extent = TextRenderer.MeasureText(lab.Text, lab.Font);
-
-            var hRatio = lab.Height / extent.Height;
-            var wRatio = lab.Width / extent.Width;
-            var ratio = (hRatio < wRatio) ? hRatio : wRatio;
-
-            var newSize = lab.Font.Size * ratio - 1;
-
-            lab.Font = new Font(lab.Font.FontFamily, newSize, lab.Font.Style);
-        }
-
+        
         private void ContestView_FormClosing(object sender, FormClosingEventArgs e)
         {
             _swt.Stop();
