@@ -14,7 +14,7 @@ jobs:
       version: ${{ steps.get_version.outputs.VERSION }}
       asset_name: ${{ env.Solution_Name }}_${{ steps.get_version.outputs.VERSION }}.0.zip
     steps:
-      - uses: actions/checkout@v2.3.4
+      - uses: actions/checkout@v2.4.0
 
       - name: Get the version
         id: get_version
@@ -45,7 +45,7 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2.3.4
+      - uses: actions/checkout@v2.4.0
 
       - name: Conventional Changelog Action
         id: changelog
