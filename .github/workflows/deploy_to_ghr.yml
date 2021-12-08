@@ -36,7 +36,7 @@ jobs:
           Configuration: Release
       
       - name: Upload output file
-        uses: actions/upload-artifact@v2.2.4
+        uses: actions/upload-artifact@v2.3.0
         with:
           name: build-zip
           path: ./${{ env.Solution_Name }}_${{ steps.get_version.outputs.VERSION }}.0.zip
